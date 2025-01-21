@@ -1,5 +1,5 @@
-create database steam;
-Use steam;
+CREATE DATABASE steam;
+USE steam;
 CREATE TABLE IF NOT EXISTS Tags(
 Tag_ID INT AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL UNIQUE);
@@ -22,4 +22,4 @@ VALUE ('Horror'),
 ('MmoRpg'),
 ('Action');
 
-select * from Tags
+SELECT * FROM Tags
