@@ -1,0 +1,5 @@
+use steam;
+create table badges(
+ID_Badge int auto_increment not null Primary Key,
+nome varchar(20),
+imagem text);
