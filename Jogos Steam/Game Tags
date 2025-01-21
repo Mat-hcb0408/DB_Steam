@@ -1,0 +1,25 @@
+create database steam;
+Use steam;
+CREATE TABLE IF NOT EXISTS Tags(
+Tag_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL UNIQUE);
+INSERT INTO Tags (Nome)
+VALUE ('Horror'),
+('Racing'),
+('Lego'),
+('Crime'),
+('Martial arts'),
+('War'),
+('Boxing'),
+('2d'),
+('3d'),
+('Cartoon'),
+('Anime'),
+('Pvp'),
+('Football(soccer)'),
+('Fds'),
+('Flight'),
+('MmoRpg'),
+('Action');
+
+select * from Tags
