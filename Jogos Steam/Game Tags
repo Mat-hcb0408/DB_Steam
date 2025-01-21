@@ -17,7 +17,7 @@ VALUE ('Horror'),
 ('Anime'),
 ('Pvp'),
 ('Football(soccer)'),
-('Fds'),
+('Fps'),
 ('Flight'),
 ('MmoRpg'),
 ('Action');
