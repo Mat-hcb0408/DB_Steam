@@ -1,0 +1,72 @@
+-- Criar o banco de dados (se ainda não existir)
+CREATE DATABASE IF NOT EXISTS Steam;
+USE Steam;
+
+-- Criar a tabela de desenvolvedores
+CREATE TABLE IF NOT EXISTS Developer (
+    Developer_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL UNIQUE
+);
+
+-- Criar a tabela de publicadoras
+CREATE TABLE IF NOT EXISTS Publisher (
+    Publisher_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL UNIQUE
+);
+
+-- Criar a tabela de sistemas suportados
+CREATE TABLE IF NOT EXISTS Supported_Systems (
+    System_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- Criar a tabela de tecnologias
+CREATE TABLE IF NOT EXISTS Tecnologias (
+    Tech_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Criar a tabela de tags
+CREATE TABLE IF NOT EXISTS Tags (
+    Tag_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Criar a tabela de jogos
+CREATE TABLE IF NOT EXISTS Jogo (
+    App_ID INT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Developer_ID INT,
+    Publisher_ID INT,
+    Last_Record_Update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Release_Date DATE,
+    FOREIGN KEY (Developer_ID) REFERENCES Developer(Developer_ID) ON DELETE SET NULL,
+    FOREIGN KEY (Publisher_ID) REFERENCES Publisher(Publisher_ID) ON DELETE SET NULL
+);
+
+
+-- Criar a tabela de relacionamento entre jogos e sistemas suportados
+CREATE TABLE IF NOT EXISTS Jogo_Supported_Systems (
+    App_ID INT,
+    System_ID INT,
+    PRIMARY KEY (App_ID, System_ID),
+    FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE,
+    FOREIGN KEY (System_ID) REFERENCES Supported_Systems(System_ID) ON DELETE CASCADE
+);
+
+-- Criar a tabela de relacionamento entre jogos e tecnologias
+CREATE TABLE IF NOT EXISTS Jogo_Tecnologias (
+    App_ID INT,
+    Tech_ID INT,
+    PRIMARY KEY (App_ID, Tech_ID),
+    FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Tech_ID) REFERENCES Tecnologias(Tech_ID) ON DELETE CASCADE
+);
+
+-- Criar a tabela de relacionamento entre jogos e tags
+CREATE TABLE IF NOT EXISTS Jogo_Tags (
+    App_ID INT,
+    Tag_ID INT,
+    PRIMARY KEY (App_ID, Tag_ID),
+    FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Tag_ID) REFERENCES Tags(Tag_ID) ON DELETE CASCADE);
