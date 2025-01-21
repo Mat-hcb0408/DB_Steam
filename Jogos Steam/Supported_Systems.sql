@@ -1,0 +1,30 @@
+CREATE DATABASE IF NOT EXISTS testeSistemas;
+USE testeSistemas;
+
+CREATE TABLE IF NOT EXISTS Sistemas_Suportados (
+  System_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Nome VARCHAR(50) NOT NULL UNIQUE
+);
+
+INSERT INTO Sistemas_Suportados (Nome)
+VALUES 
+  ('Windows'),
+  ('MacOS'),
+  ('Linux'),
+  ('Windows Vista 1.5'),
+  ('Windows 7 1.6'),
+  ('Windows 8 1.7'),
+  ('Windows 10 1.8'),
+  ('Windows 11 1.9'),
+  ('Arch Linux'),
+  ('CentOS'),
+  ('Debian'),
+  ('Elementary OS'),
+  ('Fedora Linux'),
+  ('macOS Sequoia 15.0.1'),
+  ('macOS Sonoma 14.7'),
+  ('macOS Ventura 13.7'),
+  ('macOS Monterey 12.7.6'),
+  ('macOS Big Sur 11.7.10');
+
+SELECT * FROM Sistemas_Suportados;
