@@ -5,3 +5,93 @@ CREATE TABLE IF NOT EXISTS Jogo_Tags (
     FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE,
     FOREIGN KEY (Tag_ID) REFERENCES Tags(Tag_ID) ON DELETE CASCADE
 );
+
+USE steam;
+INSERT INTO Jogo_Tags (App_ID, Tag_ID)
+VALUES 
+-- Counter-Strike 2
+(1, 14),  -- Fps
+(1, 21),  -- Shooter
+(1, 20),  -- Multiplayer
+(1, 23),  -- Tactical
+
+-- Terraria
+(2, 8),   -- 2d
+(2, 18),  -- Survival
+(2, 30),  -- Exploration
+(2, 31),  -- Crafting
+
+-- Red Dead Redemption 2
+(3, 19),  -- Open World
+(3, 27),  -- Story Rich
+(3, 25),  -- Adventure
+(3, 26),  -- Rpg
+
+-- The Last Of Us Part II
+(4, 18),  -- Survival
+(4, 27),  -- Story Rich
+(4, 25),  -- Adventure
+(4, 32),  -- Stealth
+
+-- Grand Theft Auto V
+(5, 19),  -- Open World
+(5, 4),   -- Crime
+(5, 35),  -- Driving
+(5, 20),  -- Multiplayer
+
+-- The Walking Dead: The Final Season
+(6, 27),  -- Story Rich
+(6, 25),  -- Adventure
+(6, 22),  -- Zombies
+
+-- Forza Horizon 5
+(7, 2),   -- Racing
+(7, 19),  -- Open World
+(7, 20),  -- Multiplayer
+
+-- Poppy Playtime - Chapter 2
+(8, 1),   -- Horror
+(8, 30),  -- Exploration
+(8, 25),  -- Adventure
+
+-- The Last Of Us Part I
+(9, 18),  -- Survival
+(9, 27),  -- Story Rich
+(9, 25),  -- Adventure
+(9, 32),  -- Stealth
+
+-- Marvel’s Spider-Man Remastered
+(10, 17),  -- Action
+(10, 19),  -- Open World
+(10, 10),  -- Cartoon
+(10, 34),  -- Hack and Slash
+
+-- Helldivers™ 2
+(11, 21),  -- Shooter
+(11, 20),  -- Multiplayer
+(11, 36),  -- Co-op
+(11, 41),  -- Sci-Fi
+
+-- Stardew Valley
+(12, 29),  -- Farming
+(12, 28),  -- Simulation
+(12, 8),   -- 2d
+(12, 26),  -- Rpg
+
+-- DayZ
+(13, 18),  -- Survival
+(13, 22),  -- Zombies
+(13, 19),  -- Open World
+(13, 20),  -- Multiplayer
+
+-- Euro Truck Simulator 2
+(14, 35),  -- Driving
+(14, 28),  -- Simulation
+(14, 19),  -- Open World
+
+-- The Elder Scrolls V: Skyrim Special Edition
+(15, 19),  -- Open World
+(15, 26),  -- Rpg
+(15, 40),  -- Fantasy
+(15, 27),  -- Story Rich
+(15, 25);  -- Adventure
