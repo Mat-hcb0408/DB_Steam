@@ -1,7 +1,9 @@
 USE steam;
 CREATE TABLE IF NOT EXISTS Tags(
-Tag_ID INT AUTO_INCREMENT PRIMARY KEY,
-    Nome VARCHAR(100) NOT NULL UNIQUE);
+    Tag_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL UNIQUE
+);
+
 INSERT INTO Tags (Nome)
 VALUE ('Horror'),
 ('Racing'),
@@ -21,4 +23,3 @@ VALUE ('Horror'),
 ('MmoRpg'),
 ('Action');
 
-SELECT * FROM Tags
