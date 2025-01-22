@@ -1,0 +1,17 @@
+use steam;
+INSERT INTO developer (Developer_ID, Nome) VALUES
+(1,'Valve'),
+(2, 'Re-Logic'),
+(3, 'Rockstar Games'),
+(4, 'Naughty Dog'),
+(5, 'Rockstar North'),
+(6, 'Telltale Games'),
+(7, 'Playground Games'),
+(8, 'MOB Games'),
+(9, 'Insomniac Games'),
+(10, 'Arrowhead Game Studios'),
+(11, 'ConcernedApe'),
+(12, 'Bohemia Interactive'),
+(13, 'SCS Software'),
+(14, 'Bethesda Game Studios'),
+(15, 'CD Projekt Red');
