@@ -5,3 +5,67 @@ CREATE TABLE IF NOT EXISTS Jogo_Tecnologias (
     FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE,
     FOREIGN KEY (Tech_ID) REFERENCES Tecnologias(Tech_ID) ON DELETE CASCADE
 );
+
+USE steam;
+INSERT INTO Jogo_Tecnologias (App_ID, Tech_ID) VALUES
+-- Counter-Strike 2
+(1, 1), -- Source 2 Engine
+(1, 16), -- Valve Anti-Cheat (VAC)
+(1, 21), -- FaceIt Anti-Cheat
+
+-- Terraria
+(2, 2), -- XNA Framework
+(2, 15), -- Unity Engine (parcialmente usado)
+
+-- Red Dead Redemption 2
+(3, 3), -- RAGE Engine
+(3, 18), -- BattlEye Anti-Cheat
+(3, 19), -- Rockstar Advanced Anti-Cheat
+
+-- The Last Of Us Part II
+(4, 4), -- Naughty Dog Engine
+(4, 17), -- Easy Anti-Cheat (EAC)
+
+-- Grand Theft Auto V
+(5, 3), -- RAGE Engine
+(5, 19), -- Rockstar Advanced Anti-Cheat
+
+-- The Walking Dead: The Final Season
+(6, 5), -- Telltale Tool
+(6, 23), -- Telltale Engine Security
+
+-- Forza Horizon 5
+(7, 6), -- ForzaTech
+(7, 17), -- Easy Anti-Cheat (EAC)
+
+-- Poppy Playtime - Chapter 2
+(8, 7), -- Unreal Engine 4
+(8, 15), -- Unity Engine (misturado no desenvolvimento)
+
+-- The Last Of Us Part I
+(9, 4), -- Naughty Dog Engine
+(9, 17), -- Easy Anti-Cheat (EAC)
+
+-- Marvel’s Spider-Man Remastered
+(10, 8), -- Insomniac Engine
+(10, 24), -- Insomniac Anti-Tamper
+
+-- Helldivers™ 2
+(11, 9), -- BITSquid Engine
+(11, 17), -- Easy Anti-Cheat (EAC)
+
+-- Stardew Valley
+(12, 10), -- Custom Engine (ConcernedApe)
+(12, 15), -- Unity Engine (parcialmente)
+
+-- DayZ
+(13, 11), -- Enfusion Engine
+(13, 17), -- Easy Anti-Cheat (EAC)
+(13, 18), -- BattlEye Anti-Cheat
+
+-- Euro Truck Simulator 2
+(14, 12), -- Prism3D Engine
+
+-- The Elder Scrolls V: Skyrim Special Edition
+(15, 13), -- Creation Engine
+(15, 25); -- Denuvo Anti-Tamper
