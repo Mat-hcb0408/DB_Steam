@@ -15,16 +15,11 @@ ID_Badge int auto_increment not null Primary Key,
 nome varchar(20),
 imagem text);
 
-
 -- tabela usuario badge
 create table usuario_badge(
-ID_Usuario int auto_increment not null Primary Key,
-Nome varchar(80) not null,
-Nick_name varchar(100) not null,
-Email varchar(80) not null,
-Senha varchar(10),
-confirmacao BOOLEAN DEFAULT FALSE,
+ID_Usuario int,
 ID_Badge int,
+Foreign key (ID_Usuario) references usuario(ID_Usuario),
 Foreign key (ID_Badge) references badges(ID_Badge)
 );
 
@@ -36,7 +31,6 @@ foreign key(App_ID) references Jogo(App_ID),
 foreign key(ID_Usuario) references usuario(ID_Usuario)
 );
 
-
 -- tabela amigos
 create table amigos(
     ID_usuario1 int,
@@ -46,4 +40,3 @@ create table amigos(
     foreign key (ID_usuario2) references usuario(ID_Usuario) on delete cascade,
     check (ID_usuario1 <> ID_usuario2) -- Impede um usuário de ser amigo dele mesmo
 );
-
