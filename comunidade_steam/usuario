@@ -15,12 +15,12 @@ USE usuario;
 CREATE TABLE usuarios (
   ID INT AUTO_INCREMENT PRIMARY KEY,
   Nome VARCHAR(255) NOT NULL,
-  Nickname VARCHAR(255) NOT NULL,
+  Nick_name VARCHAR(255) NOT NULL,
   Email VARCHAR(255) NOT NULL,
   Senha VARCHAR(255) NOT NULL
 );
 
-INSERT INTO usuarios (Nome, Nickname, Email, Senha)
+INSERT INTO usuarios (Nome, Nick_name, Email, Senha)
 VALUES 
   ('Matheus Henrinque', 'Star_Ghost0408', 'matheus.henrinque@gmail.com', 'senha123'),
   ('Thallys Malaquias', 'Thallys_San', 'thallys.malaquias@hotmail.com', 'senha456'),
