@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS Jogo_Supported_Systems (
 
 ADICIONAR
 -- Associando sistemas operacionais aos jogos
-INSERT INTO Jogo_Sistemas (App_ID, System_ID)
+INSERT INTO Jogo_Supported_Systems (App_ID, System_ID)
 VALUES
   -- Counter-Strike 2
   (1, 1),  -- Windows
