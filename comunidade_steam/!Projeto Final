@@ -1,0 +1,47 @@
+use steam;
+-- tabela usuario
+create table usuario(
+ID_Usuario int auto_increment not null Primary Key,
+Nome varchar(80) not null,
+Nick_name varchar(100) not null,
+Email varchar(80) not null,
+Senha varchar(10),
+confirmacao BOOLEAN DEFAULT FALSE
+);
+
+-- tabela badges
+create table badges(
+ID_Badge int auto_increment not null Primary Key,
+nome varchar(20),
+imagem text);
+
+
+-- tabela usuario badge
+create table usuario_badge(
+ID_Usuario int auto_increment not null Primary Key,
+Nome varchar(80) not null,
+Nick_name varchar(100) not null,
+Email varchar(80) not null,
+Senha varchar(10),
+confirmacao BOOLEAN DEFAULT FALSE,
+ID_Badge int,
+Foreign key (ID_Badge) references badges(ID_Badge)
+);
+
+-- tabela biblioteca
+create table biblioteca(
+App_ID INT,
+ID_Usuario int,
+foreign key(App_ID) references Jogo(App_ID),
+foreign key(ID_Usuario) references usuario(ID_Usuario)
+);
+
+
+-- tabela amigos
+create table amigos(
+ID_usuario1 int,
+ID_usuario2 int,
+primary key (ID_usuario1,ID_usuario2),
+foreign key (ID_usuario1) references usuario(ID_Usuario) on delete cascade,
+foreign key (ID_usuario2) references usuario(ID_Usuario) on delete cascade
+);
