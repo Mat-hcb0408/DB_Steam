@@ -27,3 +27,18 @@ VALUES
 (13, 'DayZ', 12, 9, '2018-12-13'), 
 (14, 'Euro Truck Simulator 2', 13, 10, '2012-10-19'),
 (15,'The Elder Scrolls V: Skyrim Special Edition',14,11,'2016-10-28');
+
+SELECT 
+    jogo.App_ID, 
+    jogo.Nome AS Jogo_Nome, 
+    d.Nome AS Developer_Nome, 
+    p.Nome AS Publisher_Nome, 
+    jogo.Last_Record_Update, 
+    jogo.Release_Date
+FROM 
+    Jogo jogo
+JOIN 
+    Developer d ON jogo.Developer_ID = d.Developer_ID
+JOIN 
+    Publisher p ON jogo.Publisher_ID = p.Publisher_ID
+LIMIT 0, 1000;
