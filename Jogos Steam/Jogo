@@ -30,15 +30,18 @@ VALUES
 
 SELECT 
     jogo.App_ID, 
-    jogo.Nome AS Jogo_Nome, 
-    d.Nome AS Developer_Nome, 
-    p.Nome AS Publisher_Nome, 
+    jogo.Nome, 
+    developer.Nome AS Developer_Nome, 
+    publisher.Nome AS Publisher_Nome, 
     jogo.Last_Record_Update, 
     jogo.Release_Date
 FROM 
-    Jogo jogo
+    Jogo
 JOIN 
-    Developer d ON jogo.Developer_ID = d.Developer_ID
+    Developer ON Jogo.Developer_ID = Developer.Developer_ID
 JOIN 
-    Publisher p ON jogo.Publisher_ID = p.Publisher_ID
-LIMIT 0, 1000;
+    Publisher ON Jogo.Publisher_ID = Publisher.Publisher_ID
+ORDER BY
+	jogo.App_ID Asc;
+
+
