@@ -1,0 +1,17 @@
+use steam;
+INSERT INTO publisher (Publisher_ID, Nome) VALUES
+(1,'Valve'),
+(2, 'Re-Logic'),
+(3, 'Rockstar Games'),
+(4, 'Sony Interactive Entertainment'),
+(5, 'Skybound Games'),
+(6, 'Xbox Game Studios'),
+(7, 'MOB Games'),
+(8, 'ConcernedApe'),
+(9, 'Bohemia Interactive'),
+(10, 'SCS Software')
+(11, 'Bethesda Softworks'),
+(12, 'Electronic Arts'),
+(13, 'Ubisoft'),
+(14, 'Square Enix'),
+(15, 'Bandai Namco Entertainment');
