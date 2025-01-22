@@ -1,5 +1,36 @@
-use steam;
-create table badges(
+create database Steam;
+use Steam;
+create table Badges(
 ID_Badge int auto_increment not null Primary Key,
-nome varchar(20),
-imagem text);
+nome varchar(355),
+imagem text
+);
+
+insert into Badges (nome)
+values 
+('Community Contributor'),
+('2022 Steam Cup'),
+('Steam Awards Nomination Committee 2018'),
+('Steam Community Moderator'),
+('Community Ambassador'),
+('Steam Summer Camp'),
+('The Potato Sack'),
+('Owned Games'),
+('The Paranormal Professor'),
+('The Ghost Detective'),
+('Salien'),
+('Red Herring'),
+('Steamworks Developer'),
+('Years of Service'),
+('Steam Holiday Sale 2011'),
+('Steam Summer Sale 2012'),
+('Game Soul'),
+('Steam Level'),
+('Steam Birthday'),
+('Live Streaming'),
+('Trading Card Beta Tester'),
+('Steam Hardware Beta'),
+('Lunar New Year 2020'),
+('2021: Steam Awards');
+
+select * from Badges;
