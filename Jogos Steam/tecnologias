@@ -2,3 +2,36 @@ CREATE TABLE IF NOT EXISTS Tecnologias (
     Tech_ID INT AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL UNIQUE
 );
+
+use steam;
+INSERT INTO Tecnologias (Tech_ID, Nome) VALUES
+(1, 'Source 2 Engine'),                 -- Counter-Strike 2
+(2, 'XNA Framework'),                    -- Terraria
+(3, 'RAGE Engine'),                      -- Red Dead Redemption 2 e Grand Theft Auto V
+(4, 'Naughty Dog Engine'),               -- The Last Of Us Part II e The Last Of Us Part I
+(5, 'Telltale Tool'),                    -- The Walking Dead: The Final Season
+(6, 'ForzaTech'),                        -- Forza Horizon 5
+(7, 'Unreal Engine 4'),                  -- Poppy Playtime - Chapter 2
+(8, 'Insomniac Engine'),                 -- Marvel’s Spider-Man Remastered
+(9, 'BITSquid Engine'),                  -- Helldivers™ 2
+(10, 'Custom Engine (ConcernedApe)'),    -- Stardew Valley
+(11, 'Enfusion Engine'),                 -- DayZ
+(12, 'Prism3D Engine'),                  -- Euro Truck Simulator 2
+(13, 'Creation Engine'),                 -- The Elder Scrolls V: Skyrim Special Edition
+(14, 'Unreal Engine 5'),                 -- Possível para futuros jogos, mas não listado
+(15, 'Unity Engine'),                    -- Amplamente usado para jogos diversos
+(16, 'Valve Anti-Cheat (VAC)'),         -- Usado em Counter-Strike 2
+(17, 'Easy Anti-Cheat (EAC)'),          -- Usado em Helldivers™ 2, Forza Horizon 5, The Last Of Us Part I, DayZ
+(18, 'BattlEye Anti-Cheat'),            -- Usado em DayZ, Red Dead Redemption 2, Fortnite
+(19, 'Rockstar Advanced Anti-Cheat'),   -- Usado em Red Dead Redemption 2 e Grand Theft Auto V
+(20, 'PunkBuster'),                     -- Usado em jogos antigos, mas pode ser adaptado
+(21, 'FaceIt Anti-Cheat'),              -- Usado em torneios de Counter-Strike 2
+(22, 'Ricochet Anti-Cheat'),            -- Usado em Call of Duty, pode ser implementado em FPS
+(23, 'Telltale Engine Security'),       -- Segurança interna usada pela Telltale Games
+(24, 'Insomniac Anti-Tamper'),          -- Pode ser implementado em Marvel’s Spider-Man Remastered
+(25, 'Denuvo Anti-Tamper'),             -- Utilizado em vários jogos para proteção contra pirataria
+(26, 'Arxan Anti-Tamper'),              -- Proteção contra engenharia reversa
+(27, 'Hyperion Anti-Cheat'),            -- Nova tecnologia em alguns jogos online
+(28, 'Microsoft Defender Game Security'), -- Segurança integrada no Windows para jogos
+(29, 'Epic Online Services (EOS) Anti-Cheat'), -- Ferramenta anti-cheat da Epic Games
+(30, 'FairFight');                      -- Utilizado em jogos da EA, pode ser implementado em shooters
