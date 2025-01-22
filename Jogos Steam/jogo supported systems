@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS Jogo_Supported_Systems (
+    App_ID INT,
+    System_ID INT,
+    PRIMARY KEY (App_ID, System_ID),
+    FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE,
+    FOREIGN KEY (System_ID) REFERENCES Supported_Systems(System_ID) ON DELETE CASCADE
+);
