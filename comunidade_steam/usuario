@@ -5,7 +5,5 @@ Nome varchar(80) not null,
 Nick_name varchar(100) not null,
 Email varchar(80) not null,
 Senha varchar(10),
-confirmacao BOOLEAN DEFAULT FALSE,
-ID_Badge int,
-Foreign key (ID_Badge) references badges(ID_Badge)
+confirmacao BOOLEAN DEFAULT FALSE
 );
