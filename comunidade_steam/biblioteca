@@ -1,0 +1,7 @@
+use steam;
+create table biblioteca(
+App_ID INT,
+ID_Usuario int,
+foreign key(App_ID) references Jogo(App_ID),
+foreign key(ID_Usuario) references usuario(ID_Usuario)
+);
