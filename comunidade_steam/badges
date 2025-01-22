@@ -32,5 +32,3 @@ values
 ('Steam Hardware Beta'),
 ('Lunar New Year 2020'),
 ('2021: Steam Awards');
-
-select * from Badges;
