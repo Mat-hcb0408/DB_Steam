@@ -1,3 +1,4 @@
+CRIAR
 CREATE TABLE IF NOT EXISTS Jogo_Tecnologias (
     App_ID INT,
     Tech_ID INT,
@@ -6,6 +7,7 @@ CREATE TABLE IF NOT EXISTS Jogo_Tecnologias (
     FOREIGN KEY (Tech_ID) REFERENCES Tecnologias(Tech_ID) ON DELETE CASCADE
 );
 
+ADICIONAR
 USE steam;
 INSERT INTO Jogo_Tecnologias (App_ID, Tech_ID) VALUES
 -- Counter-Strike 2
@@ -69,3 +71,17 @@ INSERT INTO Jogo_Tecnologias (App_ID, Tech_ID) VALUES
 -- The Elder Scrolls V: Skyrim Special Edition
 (15, 13), -- Creation Engine
 (15, 25); -- Denuvo Anti-Tamper
+
+INSPENCIONAR
+USE steam;
+SELECT 
+    jogo.Nome AS Jogo_Nome,
+    GROUP_CONCAT(tecnologias.Nome ORDER BY tecnologias.Nome ASC) AS Tecnologias_Associadas
+FROM 
+    Jogo
+JOIN 
+    Jogo_Tecnologias jt ON jogo.App_ID = jt.App_ID
+JOIN 
+    Tecnologias tecnologias ON jt.Tech_ID = tecnologias.Tech_ID
+GROUP BY 
+    jogo.App_ID;
