@@ -1,3 +1,4 @@
+CRIAR
 CREATE TABLE IF NOT EXISTS Jogo_Supported_Systems (
     App_ID INT,
     System_ID INT,
@@ -5,3 +6,92 @@ CREATE TABLE IF NOT EXISTS Jogo_Supported_Systems (
     FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE,
     FOREIGN KEY (System_ID) REFERENCES Supported_Systems(System_ID) ON DELETE CASCADE
 );
+
+ADICIONAR
+-- Associando sistemas operacionais aos jogos
+INSERT INTO Jogo_Sistemas (App_ID, System_ID)
+VALUES
+  -- Counter-Strike 2
+  (1, 1),  -- Windows
+  (1, 7),  -- Windows 10
+  (1, 8),  -- Windows 11
+  (1, 9),  -- Arch Linux
+
+  -- Terraria
+  (2, 1),  -- Windows
+  (2, 2),  -- MacOS
+  (2, 3),  -- Linux
+  (2, 7),  -- Windows 10
+  (2, 8),  -- Windows 11
+
+  -- Red Dead Redemption 2
+  (3, 1),  -- Windows
+  (3, 7),  -- Windows 10
+  (3, 8),  -- Windows 11
+
+  -- The Last Of Us Part II
+  (4, 1),  -- Windows
+  (4, 7),  -- Windows 10
+  (4, 8),  -- Windows 11
+
+  -- Grand Theft Auto V
+  (5, 1),  -- Windows
+  (5, 7),  -- Windows 10
+  (5, 8),  -- Windows 11
+  (5, 9),  -- Arch Linux
+
+  -- The Walking Dead: The Final Season
+  (6, 1),  -- Windows
+  (6, 7),  -- Windows 10
+  (6, 8),  -- Windows 11
+
+  -- Forza Horizon 5
+  (7, 1),  -- Windows
+  (7, 7),  -- Windows 10
+  (7, 8),  -- Windows 11
+
+  -- Poppy Playtime - Chapter 2
+  (8, 1),  -- Windows
+  (8, 2),  -- MacOS
+  (8, 7),  -- Windows 10
+  (8, 8),  -- Windows 11
+
+  -- The Last Of Us Part I
+  (9, 1),  -- Windows
+  (9, 7),  -- Windows 10
+  (9, 8),  -- Windows 11
+
+  -- Marvel’s Spider-Man Remastered
+  (10, 1),  -- Windows
+  (10, 7),  -- Windows 10
+  (10, 8),  -- Windows 11
+
+  -- Helldivers™ 2
+  (11, 1),  -- Windows
+  (11, 7),  -- Windows 10
+  (11, 8),  -- Windows 11
+  (11, 9),  -- Arch Linux
+
+  -- Stardew Valley
+  (12, 1),  -- Windows
+  (12, 2),  -- MacOS
+  (12, 3),  -- Linux
+  (12, 7),  -- Windows 10
+  (12, 8),  -- Windows 11
+
+  -- DayZ
+  (13, 1),  -- Windows
+  (13, 7),  -- Windows 10
+  (13, 8),  -- Windows 11
+
+  -- Euro Truck Simulator 2
+  (14, 1),  -- Windows
+  (14, 7),  -- Windows 10
+  (14, 8),  -- Windows 11
+
+  -- The Elder Scrolls V: Skyrim Special Edition
+  (15, 1),  -- Windows
+  (15, 7),  -- Windows 10
+  (15, 8),  -- Windows 11
+  (15, 9),  -- Arch Linux
+  (15, 2);  -- MacOS
