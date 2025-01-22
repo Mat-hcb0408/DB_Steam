@@ -7,3 +7,34 @@ Email varchar(80) not null,
 Senha varchar(10),
 confirmacao BOOLEAN DEFAULT FALSE
 );
+
+CREATE DATABASE usuario;
+
+USE usuario;
+
+CREATE TABLE usuarios (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  Nome VARCHAR(80) NOT NULL,
+  Nickname VARCHAR(100) NOT NULL
+);
+
+INSERT INTO usuarios (Nome, Nickname)
+VALUES 
+  ('Matheus Henrinque', 'Star_Ghost0408'),
+  ('Thallys Malaquias', 'Thallys_San'),
+  ('Davidson Fernandes', 'Fdavidson91'),
+  ('Guilherme Rocha', '919Calabreso'),
+  ('Ryan Gabriel', 'Camisinho'),
+  ('Rafael Pereira', 'RoubeiTeuLoot'),
+  ('Pedro Henrique', 'TropeceiNoHDMI'),
+  ('Marcos Silva', 'LagMental200ms9'),
+  ('João Souza', 'SeuModemCaiu'),
+  ('Bruno Lima', 'BalaPerdidaVIP'),
+  ('André Almeida', 'AltF4ProPlayer'),
+  ('Eduardo Campos', 'PuloErrado123'),
+  ('Fernanda Costa', 'Fedora Linux'),
+  ('Tiago Rodrigues', 'TioDoWiFiGratis'),
+  ('Renan Faria', 'HeadshotNaSorte'),
+  ('Gustavo Lopes', 'CamperDoAno'),
+  ('Ana Paula', 'NaFilaDoRespawn'),
+  ('Caio Matos', 'CtrlAltTilt');
