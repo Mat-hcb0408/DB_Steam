@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS Tags(
     Nome VARCHAR(100) NOT NULL UNIQUE
 );
 
+use steam;
 INSERT INTO Tags (Nome)
 VALUE ('Horror'),
 ('Racing'),
@@ -20,5 +21,32 @@ VALUE ('Horror'),
 ('Fps'),
 ('Flight'),
 ('MmoRpg'),
-('Action');
-
+('Action'),
+('Survival'),
+('Open World'),
+('Multiplayer'),
+('Shooter'),
+('Zombies'),
+('Tactical'),
+('Strategy'),
+('Adventure'),
+('Rpg'),
+('Story Rich'),
+('Simulation'),
+('Farming'),
+('Exploration'),
+('Crafting'),
+('Stealth'),
+('Parkour'),
+('Hack and Slash'),
+('Driving'),
+('Co-op'),
+('Battle Royale'),
+('Third Person'),
+('First Person'),
+('Fantasy'),
+('Sci-Fi'),
+('Post-Apocalyptic'),
+('Physics'),
+('Metroidvania'),
+('Cyberpunk');
