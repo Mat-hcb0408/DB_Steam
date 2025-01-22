@@ -39,9 +39,11 @@ foreign key(ID_Usuario) references usuario(ID_Usuario)
 
 -- tabela amigos
 create table amigos(
-ID_usuario1 int,
-ID_usuario2 int,
-primary key (ID_usuario1,ID_usuario2),
-foreign key (ID_usuario1) references usuario(ID_Usuario) on delete cascade,
-foreign key (ID_usuario2) references usuario(ID_Usuario) on delete cascade
+    ID_usuario1 int,
+    ID_usuario2 int,
+    primary key (ID_usuario1, ID_usuario2),
+    foreign key (ID_usuario1) references usuario(ID_Usuario) on delete cascade,
+    foreign key (ID_usuario2) references usuario(ID_Usuario) on delete cascade,
+    check (ID_usuario1 <> ID_usuario2) -- Impede um usuário de ser amigo dele mesmo
 );
+
