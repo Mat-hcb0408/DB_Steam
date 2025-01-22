@@ -1,9 +1,9 @@
-CREATE TABLE IF NOT EXISTS Sistemas_Suportados (
+CREATE TABLE IF NOT EXISTS supported_systems (
   System_ID INT AUTO_INCREMENT PRIMARY KEY,
   Nome VARCHAR(50) NOT NULL UNIQUE
 );
 
-INSERT INTO Sistemas_Suportados (Nome)
+INSERT INTO supported_systems (Nome)
 VALUES 
   ('Windows'),
   ('MacOS'),
