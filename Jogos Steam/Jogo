@@ -1,0 +1,29 @@
+CREATE TABLE IF NOT EXISTS Jogo (
+    App_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Developer_ID INT,
+    Publisher_ID INT,
+    Last_Record_Update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Release_Date DATE,
+    FOREIGN KEY (Developer_ID) REFERENCES Developer(Developer_ID) ON DELETE SET NULL,
+    FOREIGN KEY (Publisher_ID) REFERENCES Publisher(Publisher_ID) ON DELETE SET NULL
+);
+
+USE steam;
+INSERT INTO Jogo (App_ID, Nome, Developer_ID, Publisher_ID, Release_Date) 
+VALUES
+(1, 'Counter-Strike 2', 1, 1, '2012-08-21'),
+(2, 'Terraria', 2, 2, '2011-05-16'), 
+(3, 'Red Dead Redemption 2', 3, 3, '2018-10-26'), 
+(4, 'The Last Of Us Part II', 4, 4, '2020-06-19'), 
+(5, 'Grand Theft Auto V', 5, 3, '2015-04-14'), 
+(6, 'The Walking Dead: The Final Season', 6, 5, '2018-08-14'), 
+(7, 'Forza Horizon 5', 7, 6, '2021-11-09'), 
+(8, 'Poppy Playtime - Chapter 2', 8, 7, '2022-05-05'), 
+(9, 'The Last Of Us Part I', 4, 4, '2022-09-02'), 
+(10, 'Marvel’s Spider-Man Remastered', 9, 4, '2022-08-12'), 
+(11, 'Helldivers™ 2', 10, 4, '2024-09-20'), 
+(12, 'Stardew Valley', 11, 8, '2016-02-26'), 
+(13, 'DayZ', 12, 9, '2018-12-13'), 
+(14, 'Euro Truck Simulator 2', 13, 10, '2012-10-19'),
+(15,'The Elder Scrolls V: Skyrim Special Edition',14,11,'2016-10-28');
