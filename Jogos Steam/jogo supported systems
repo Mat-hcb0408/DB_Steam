@@ -95,3 +95,16 @@ VALUES
   (15, 8),  -- Windows 11
   (15, 9),  -- Arch Linux
   (15, 2);  -- MacOS
+
+INSPENCIONAR
+SELECT 
+    jogo.Nome AS Nome_Jogo,
+    GROUP_CONCAT(supported_systems.Nome ORDER BY supported_systems.Nome ASC) AS Sistemas_Suportados
+FROM 
+    Jogo
+JOIN 
+    Jogo_Supported_Systems jss ON jogo.App_ID = jss.App_ID
+JOIN 
+    Supported_Systems supported_systems ON jss.System_ID = supported_systems.System_ID
+GROUP BY 
+    jogo.App_ID;
