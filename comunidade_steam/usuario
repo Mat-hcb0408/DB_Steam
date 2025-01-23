@@ -7,7 +7,7 @@ Email varchar(100) not null,
 Senha varchar(10)
 );
 
-INSERT INTO usuarios (ID_Usuario, Nome, Nick_name, Email, Senha)
+INSERT INTO usuario (ID_Usuario, Nome, Nick_name, Email, Senha)
 VALUES 
   (1,'Matheus Henrinque', 'Star_Ghost0408', 'matheus.henrinque@gmail.com', 'senha123'),
   (2,'Thallys Malaquias', 'Thallys_San', 'thallys.malaquias@hotmail.com', 'senha456'),
