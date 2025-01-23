@@ -8,15 +8,6 @@ foreign key(ID_Usuario) references usuario(ID_Usuario)
 );
 
 
-create database Steam;
-USE Steam;
-create table carrinho(
-ID_Usuario int,
-App_ID int,
-Primary key (ID_Usuario, App_ID),
-foreign key(App_ID) references Jogo(App_ID),
-foreign key(ID_Usuario) references usuario(ID_Usuario)
-);
 use steam;
 INSERT INTO	carrinho (Id_usuario, App_ID)
 VALUES
