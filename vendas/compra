@@ -1,14 +1,91 @@
+
+Use Steam;
 CREATE TABLE IF NOT EXISTS Compra (
     ID_Compra INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     ID_Usuario INT,
     ID_Jogo INT NOT NULL,  -- Corrigido para referenciar o jogo
-    Data_Compra DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Metodo_Pagamento ENUM('Credit Card', 'PayPal', 'Gift Card', 'Crypto') NOT NULL,
+    Data_Compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Metodo_Pagamento ENUM('Credit Card', 'PIX', 'PayPal', 'Gift Card', 'Crypto'),
     Preco_ID INT NOT NULL,  -- Coluna para linkar o preço
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID_Usuario),
     FOREIGN KEY (ID_Jogo) REFERENCES Jogo(App_ID),  -- Referência à tabela Jogo
     FOREIGN KEY (Preco_ID) REFERENCES Preco(Preco_ID)  -- Referência à tabela Preco
 );
+
+use steam;
+INSERT INTO Compra (ID_Usuario, ID_Jogo, Metodo_Pagamento, Preco_ID) 
+VALUES 
+(1, 1, NULL, 1),  
+(1, 11, 'PIX', 2), 
+(2, 1, NULL, 3), 
+(2, 2, 'PayPal', 4), 
+(2, 3, 'Crypto', 5), 
+(2, 5, 'Credit Card', 6), 
+(2, 12, 'Credit Card', 7), 
+(2, 14, 'PayPal', 8), 
+(2, 15, 'PIX', 9),  
+(3, 1, NULL, 10), 
+(3, 5, 'Crypto', 11), 
+(3, 6, 'Credit Card', 12), 
+(3, 8, 'PayPal', 13), 
+(4, 1, NULL, 14), 
+(5, 1, NULL, 15), 
+(5, 5, 'PayPal', 1),  -- Substituí 16 por 1
+(6, 3, 'PIX', 2),    -- Substituí 17 por 2
+(6, 4, 'Credit Card', 3),  
+(6, 6, 'Crypto', 4),  
+(6, 10, 'PIX', 5),   
+(7, 1, NULL, 6),  
+(7, 11, 'PayPal', 7),  
+(7, 13, 'Crypto', 8),  
+(7, 14, 'PayPal', 9),  
+(7, 15, 'Crypto', 10),  
+(8, 2, 'PIX', 11),   
+(8, 8, 'PIX', 12),   
+(8, 12, 'PayPal', 13),  
+(8, 14, 'Crypto', 14),  
+(9, 1, NULL, 15),  
+(9, 4, 'Crypto', 1),  
+(9, 9, 'PayPal', 2),  
+(9, 11, 'PIX', 3),  
+(10, 10, 'Credit Card', 4),  
+(10, 11, 'PayPal', 5),  
+(10, 12, 'PIX', 6),  
+(10, 13, 'PIX', 7),  
+(10, 14, 'PIX', 8),  
+(10, 15, 'PIX', 9),  
+(11, 1, NULL, 10),  
+(11, 2, 'PIX', 11),  
+(11, 3, 'PIX', 12),  
+(11, 4, 'Credit Card', 13),  
+(11, 5, 'Credit Card', 14),  
+(11, 6, 'Credit Card', 15),  
+(12, 7, 'Credit Card', 1),  
+(12, 9, 'PayPal', 2),  
+(12, 10, 'Crypto', 3),  
+(12, 11, 'Credit Card', 4),  
+(12, 14, 'PIX', 5),  
+(13, 4, 'PIX', 6),  
+(13, 9, 'Credit Card', 7),  
+(13, 10, 'Credit Card', 8),  
+(13, 11, 'Credit Card', 9),  
+(14, 14, 'Credit Card', 10),  
+(15, 1, NULL, 11),  
+(15, 2, 'PIX', 12),  
+(15, 3, 'Credit Card', 13),  
+(15, 4, 'PIX', 14),  
+(15, 5, 'Credit Card', 15),  
+(15, 6, 'Credit Card', 1),  
+(15, 7, 'Credit Card', 2),  
+(15, 8, 'PIX', 3),  
+(15, 9, 'PIX', 4),  
+(15, 10, 'PIX', 5),  
+(15, 11, 'Credit Card', 6),  
+(15, 12, 'PayPal', 7),  
+(15, 13, 'PayPal', 8),  
+(15, 14, 'PayPal', 9),  
+(15, 15, 'PayPal', 10);
+
 
 SELECT 
     c.ID_Compra, 
