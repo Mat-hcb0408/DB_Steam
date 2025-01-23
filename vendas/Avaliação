@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS Avaliacao (
     ID_Avaliacao INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     ID_Usuario INT NOT NULL,           -- ID do usuário que fez a avaliação
-    ID_Jogo INT NOT NULL,              -- ID do jogo avaliado
+    App_ID INT NOT NULL,              -- ID do jogo avaliado
     Nota INT NOT NULL CHECK (Nota BETWEEN 1 AND 10),  -- Nota de 1 a 10
     Comentario TEXT,                   -- Comentário opcional do usuário
     Data_Avaliacao DATETIME DEFAULT CURRENT_TIMESTAMP,  -- Data da avaliação
