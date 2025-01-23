@@ -1,6 +1,6 @@
 use steam;
 create table usuario_badge(
-ID_Usuario int 
+ID_Usuario int,
 ID_Badge int,
 Foreign key (ID_Usuario) references usuario(ID_Usuario),
 Foreign key (ID_Badge) references badges(ID_Badge)
