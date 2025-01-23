@@ -67,4 +67,15 @@ VALUES
 ('15','2'),
 ('15','3'),
 ('15','14');
-select * from steam.carrinho
+
+use steam;
+SELECT 
+    c.ID_Usuario, 
+    u.Nome AS Nome_Usuario, 
+    GROUP_CONCAT(j.Nome ORDER BY j.Nome ASC SEPARATOR ', ') AS Jogos_Carrinho
+FROM carrinho c
+JOIN Usuario u ON c.ID_Usuario = u.ID_Usuario
+JOIN Jogo j ON c.App_ID = j.App_ID
+GROUP BY c.ID_Usuario, u.Nome
+ORDER BY c.ID_Usuario;
+
