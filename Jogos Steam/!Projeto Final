@@ -70,3 +70,450 @@ CREATE TABLE IF NOT EXISTS Jogo_Tags (
     PRIMARY KEY (App_ID, Tag_ID),
     FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE,
     FOREIGN KEY (Tag_ID) REFERENCES Tags(Tag_ID) ON DELETE CASCADE);
+    
+    INSERT INTO developer (Developer_ID, Nome) VALUES
+(1,'Valve'),
+(2, 'Re-Logic'),
+(3, 'Rockstar Games'),
+(4, 'Naughty Dog'),
+(5, 'Rockstar North'),
+(6, 'Telltale Games'),
+(7, 'Playground Games'),
+(8, 'MOB Games'),
+(9, 'Insomniac Games'),
+(10, 'Arrowhead Game Studios'),
+(11, 'ConcernedApe'),
+(12, 'Bohemia Interactive'),
+(13, 'SCS Software'),
+(14, 'Bethesda Game Studios'),
+(15, 'CD Projekt Red');
+
+INSERT INTO Jogo (App_ID, Nome, Developer_ID, Publisher_ID, Release_Date) 
+VALUES
+(1, 'Counter-Strike 2', 1, 1, '2012-08-21'),
+(2, 'Terraria', 2, 2, '2011-05-16'), 
+(3, 'Red Dead Redemption 2', 3, 3, '2018-10-26'), 
+(4, 'The Last Of Us Part II', 4, 4, '2020-06-19'), 
+(5, 'Grand Theft Auto V', 5, 3, '2015-04-14'), 
+(6, 'The Walking Dead: The Final Season', 6, 5, '2018-08-14'), 
+(7, 'Forza Horizon 5', 7, 6, '2021-11-09'), 
+(8, 'Poppy Playtime - Chapter 2', 8, 7, '2022-05-05'), 
+(9, 'The Last Of Us Part I', 4, 4, '2022-09-02'), 
+(10, 'Marvel’s Spider-Man Remastered', 9, 4, '2022-08-12'), 
+(11, 'Helldivers™ 2', 10, 4, '2024-09-20'), 
+(12, 'Stardew Valley', 11, 8, '2016-02-26'), 
+(13, 'DayZ', 12, 9, '2018-12-13'), 
+(14, 'Euro Truck Simulator 2', 13, 10, '2012-10-19'),
+(15,'The Elder Scrolls V: Skyrim Special Edition',14,11,'2016-10-28');
+
+SELECT 
+    jogo.App_ID, 
+    jogo.Nome, 
+    developer.Nome AS Developer_Nome, 
+    publisher.Nome AS Publisher_Nome, 
+    jogo.Last_Record_Update, 
+    jogo.Release_Date
+FROM 
+    Jogo
+JOIN 
+    Developer ON Jogo.Developer_ID = Developer.Developer_ID
+JOIN 
+    Publisher ON Jogo.Publisher_ID = Publisher.Publisher_ID
+ORDER BY
+	jogo.App_ID Asc;
+    
+    INSERT INTO publisher (Publisher_ID, Nome) VALUES
+(1,'Valve'),
+(2, 'Re-Logic'),
+(3, 'Rockstar Games'),
+(4, 'Sony Interactive Entertainment'),
+(5, 'Skybound Games'),
+(6, 'Xbox Game Studios'),
+(7, 'MOB Games'),
+(8, 'ConcernedApe'),
+(9, 'Bohemia Interactive'),
+(10, 'SCS Software'),
+(11, 'Bethesda Softworks'),
+(12, 'Electronic Arts'),
+(13, 'Ubisoft'),
+(14, 'Square Enix'),
+(15, 'Bandai Namco Entertainment');
+
+INSERT INTO supported_systems (Nome)
+VALUES 
+  ('Windows'),
+  ('MacOS'),
+  ('Linux'),
+  ('Windows Vista 1.5'),
+  ('Windows 7 1.6'),
+  ('Windows 8 1.7'),
+  ('Windows 10 1.8'),
+  ('Windows 11 1.9'),
+  ('Arch Linux'),
+  ('CentOS'),
+  ('Debian'),
+  ('Elementary OS'),
+  ('Fedora Linux'),
+  ('macOS Sequoia 15.0.1'),
+  ('macOS Sonoma 14.7'),
+  ('macOS Ventura 13.7'),
+  ('macOS Monterey 12.7.6'),
+  ('macOS Big Sur 11.7.10');
+  
+  INSERT INTO Tags (Nome)
+VALUE ('Horror'),
+('Racing'),
+('Lego'),
+('Crime'),
+('Martial arts'),
+('War'),
+('Boxing'),
+('2d'),
+('3d'),
+('Cartoon'),
+('Anime'),
+('Pvp'),
+('Football(soccer)'),
+('Fps'),
+('Flight'),
+('MmoRpg'),
+('Action'),
+('Survival'),
+('Open World'),
+('Multiplayer'),
+('Shooter'),
+('Zombies'),
+('Tactical'),
+('Strategy'),
+('Adventure'),
+('Rpg'),
+('Story Rich'),
+('Simulation'),
+('Farming'),
+('Exploration'),
+('Crafting'),
+('Stealth'),
+('Parkour'),
+('Hack and Slash'),
+('Driving'),
+('Co-op'),
+('Battle Royale'),
+('Third Person'),
+('First Person'),
+('Fantasy'),
+('Sci-Fi'),
+('Post-Apocalyptic'),
+('Physics'),
+('Metroidvania'),
+('Cyberpunk');
+
+-- Associando sistemas operacionais aos jogos
+INSERT INTO Jogo_Supported_Systems (App_ID, System_ID)
+VALUES
+  -- Counter-Strike 2
+  (1, 1),  -- Windows
+  (1, 7),  -- Windows 10
+  (1, 8),  -- Windows 11
+  (1, 9),  -- Arch Linux
+
+  -- Terraria
+  (2, 1),  -- Windows
+  (2, 2),  -- MacOS
+  (2, 3),  -- Linux
+  (2, 7),  -- Windows 10
+  (2, 8),  -- Windows 11
+
+  -- Red Dead Redemption 2
+  (3, 1),  -- Windows
+  (3, 7),  -- Windows 10
+  (3, 8),  -- Windows 11
+
+  -- The Last Of Us Part II
+  (4, 1),  -- Windows
+  (4, 7),  -- Windows 10
+  (4, 8),  -- Windows 11
+
+  -- Grand Theft Auto V
+  (5, 1),  -- Windows
+  (5, 7),  -- Windows 10
+  (5, 8),  -- Windows 11
+  (5, 9),  -- Arch Linux
+
+  -- The Walking Dead: The Final Season
+  (6, 1),  -- Windows
+  (6, 7),  -- Windows 10
+  (6, 8),  -- Windows 11
+
+  -- Forza Horizon 5
+  (7, 1),  -- Windows
+  (7, 7),  -- Windows 10
+  (7, 8),  -- Windows 11
+
+  -- Poppy Playtime - Chapter 2
+  (8, 1),  -- Windows
+  (8, 2),  -- MacOS
+  (8, 7),  -- Windows 10
+  (8, 8),  -- Windows 11
+
+  -- The Last Of Us Part I
+  (9, 1),  -- Windows
+  (9, 7),  -- Windows 10
+  (9, 8),  -- Windows 11
+
+  -- Marvel’s Spider-Man Remastered
+  (10, 1),  -- Windows
+  (10, 7),  -- Windows 10
+  (10, 8),  -- Windows 11
+
+  -- Helldivers™ 2
+  (11, 1),  -- Windows
+  (11, 7),  -- Windows 10
+  (11, 8),  -- Windows 11
+  (11, 9),  -- Arch Linux
+
+  -- Stardew Valley
+  (12, 1),  -- Windows
+  (12, 2),  -- MacOS
+  (12, 3),  -- Linux
+  (12, 7),  -- Windows 10
+  (12, 8),  -- Windows 11
+
+  -- DayZ
+  (13, 1),  -- Windows
+  (13, 7),  -- Windows 10
+  (13, 8),  -- Windows 11
+
+  -- Euro Truck Simulator 2
+  (14, 1),  -- Windows
+  (14, 7),  -- Windows 10
+  (14, 8),  -- Windows 11
+
+  -- The Elder Scrolls V: Skyrim Special Edition
+  (15, 1),  -- Windows
+  (15, 7),  -- Windows 10
+  (15, 8),  -- Windows 11
+  (15, 9),  -- Arch Linux
+  (15, 2);  -- MacOS
+
+SELECT 
+    jogo.Nome AS Nome_Jogo,
+    GROUP_CONCAT(supported_systems.Nome ORDER BY supported_systems.Nome ASC) AS Sistemas_Suportados
+FROM 
+    Jogo
+JOIN 
+    Jogo_Supported_Systems jss ON jogo.App_ID = jss.App_ID
+JOIN 
+    Supported_Systems supported_systems ON jss.System_ID = supported_systems.System_ID
+GROUP BY 
+    jogo.App_ID;
+    
+    INSERT INTO Jogo_Tags (App_ID, Tag_ID)
+VALUES 
+-- Counter-Strike 2
+(1, 14),  -- Fps
+(1, 21),  -- Shooter
+(1, 20),  -- Multiplayer
+(1, 23),  -- Tactical
+
+-- Terraria
+(2, 8),   -- 2d
+(2, 18),  -- Survival
+(2, 30),  -- Exploration
+(2, 31),  -- Crafting
+
+-- Red Dead Redemption 2
+(3, 19),  -- Open World
+(3, 27),  -- Story Rich
+(3, 25),  -- Adventure
+(3, 26),  -- Rpg
+
+-- The Last Of Us Part II
+(4, 18),  -- Survival
+(4, 27),  -- Story Rich
+(4, 25),  -- Adventure
+(4, 32),  -- Stealth
+
+-- Grand Theft Auto V
+(5, 19),  -- Open World
+(5, 4),   -- Crime
+(5, 35),  -- Driving
+(5, 20),  -- Multiplayer
+
+-- The Walking Dead: The Final Season
+(6, 27),  -- Story Rich
+(6, 25),  -- Adventure
+(6, 22),  -- Zombies
+
+-- Forza Horizon 5
+(7, 2),   -- Racing
+(7, 19),  -- Open World
+(7, 20),  -- Multiplayer
+
+-- Poppy Playtime - Chapter 2
+(8, 1),   -- Horror
+(8, 30),  -- Exploration
+(8, 25),  -- Adventure
+
+-- The Last Of Us Part I
+(9, 18),  -- Survival
+(9, 27),  -- Story Rich
+(9, 25),  -- Adventure
+(9, 32),  -- Stealth
+
+-- Marvel’s Spider-Man Remastered
+(10, 17),  -- Action
+(10, 19),  -- Open World
+(10, 10),  -- Cartoon
+(10, 34),  -- Hack and Slash
+
+-- Helldivers™ 2
+(11, 21),  -- Shooter
+(11, 20),  -- Multiplayer
+(11, 36),  -- Co-op
+(11, 41),  -- Sci-Fi
+
+-- Stardew Valley
+(12, 29),  -- Farming
+(12, 28),  -- Simulation
+(12, 8),   -- 2d
+(12, 26),  -- Rpg
+
+-- DayZ
+(13, 18),  -- Survival
+(13, 22),  -- Zombies
+(13, 19),  -- Open World
+(13, 20),  -- Multiplayer
+
+-- Euro Truck Simulator 2
+(14, 35),  -- Driving
+(14, 28),  -- Simulation
+(14, 19),  -- Open World
+
+-- The Elder Scrolls V: Skyrim Special Edition
+(15, 19),  -- Open World
+(15, 26),  -- Rpg
+(15, 40),  -- Fantasy
+(15, 27),  -- Story Rich
+(15, 25);  -- Adventure
+
+USE steam;
+SELECT 
+    jogo.Nome AS Jogo_Nome,
+    GROUP_CONCAT(tags.Nome ORDER BY tags.Nome ASC) AS Tags_Associadas
+FROM 
+    Jogo
+JOIN 
+    Jogo_Tags jt ON jogo.App_ID = jt.App_ID
+JOIN 
+    Tags tags ON jt.Tag_ID = tags.Tag_ID
+GROUP BY 
+    jogo.App_ID;
+    
+    USE steam;
+INSERT INTO Jogo_Tecnologias (App_ID, Tech_ID) VALUES
+-- Counter-Strike 2
+(1, 1), -- Source 2 Engine
+(1, 16), -- Valve Anti-Cheat (VAC)
+(1, 21), -- FaceIt Anti-Cheat
+
+-- Terraria
+(2, 2), -- XNA Framework
+(2, 15), -- Unity Engine (parcialmente usado)
+
+-- Red Dead Redemption 2
+(3, 3), -- RAGE Engine
+(3, 18), -- BattlEye Anti-Cheat
+(3, 19), -- Rockstar Advanced Anti-Cheat
+
+-- The Last Of Us Part II
+(4, 4), -- Naughty Dog Engine
+(4, 17), -- Easy Anti-Cheat (EAC)
+
+-- Grand Theft Auto V
+(5, 3), -- RAGE Engine
+(5, 19), -- Rockstar Advanced Anti-Cheat
+
+-- The Walking Dead: The Final Season
+(6, 5), -- Telltale Tool
+(6, 23), -- Telltale Engine Security
+
+-- Forza Horizon 5
+(7, 6), -- ForzaTech
+(7, 17), -- Easy Anti-Cheat (EAC)
+
+-- Poppy Playtime - Chapter 2
+(8, 7), -- Unreal Engine 4
+(8, 15), -- Unity Engine (misturado no desenvolvimento)
+
+-- The Last Of Us Part I
+(9, 4), -- Naughty Dog Engine
+(9, 17), -- Easy Anti-Cheat (EAC)
+
+-- Marvel’s Spider-Man Remastered
+(10, 8), -- Insomniac Engine
+(10, 24), -- Insomniac Anti-Tamper
+
+-- Helldivers™ 2
+(11, 9), -- BITSquid Engine
+(11, 17), -- Easy Anti-Cheat (EAC)
+
+-- Stardew Valley
+(12, 10), -- Custom Engine (ConcernedApe)
+(12, 15), -- Unity Engine (parcialmente)
+
+-- DayZ
+(13, 11), -- Enfusion Engine
+(13, 17), -- Easy Anti-Cheat (EAC)
+(13, 18), -- BattlEye Anti-Cheat
+
+-- Euro Truck Simulator 2
+(14, 12), -- Prism3D Engine
+
+-- The Elder Scrolls V: Skyrim Special Edition
+(15, 13), -- Creation Engine
+(15, 25); -- Denuvo Anti-Tamper
+
+USE steam;
+SELECT 
+    jogo.Nome AS Jogo_Nome,
+    GROUP_CONCAT(tecnologias.Nome ORDER BY tecnologias.Nome ASC) AS Tecnologias_Associadas
+FROM 
+    Jogo
+JOIN 
+    Jogo_Tecnologias jt ON jogo.App_ID = jt.App_ID
+JOIN 
+    Tecnologias tecnologias ON jt.Tech_ID = tecnologias.Tech_ID
+GROUP BY 
+    jogo.App_ID;
+    
+    INSERT INTO Tecnologias (Tech_ID, Nome) VALUES
+(1, 'Source 2 Engine'),                 -- Counter-Strike 2
+(2, 'XNA Framework'),                    -- Terraria
+(3, 'RAGE Engine'),                      -- Red Dead Redemption 2 e Grand Theft Auto V
+(4, 'Naughty Dog Engine'),               -- The Last Of Us Part II e The Last Of Us Part I
+(5, 'Telltale Tool'),                    -- The Walking Dead: The Final Season
+(6, 'ForzaTech'),                        -- Forza Horizon 5
+(7, 'Unreal Engine 4'),                  -- Poppy Playtime - Chapter 2
+(8, 'Insomniac Engine'),                 -- Marvel’s Spider-Man Remastered
+(9, 'BITSquid Engine'),                  -- Helldivers™ 2
+(10, 'Custom Engine (ConcernedApe)'),    -- Stardew Valley
+(11, 'Enfusion Engine'),                 -- DayZ
+(12, 'Prism3D Engine'),                  -- Euro Truck Simulator 2
+(13, 'Creation Engine'),                 -- The Elder Scrolls V: Skyrim Special Edition
+(14, 'Unreal Engine 5'),                 -- Possível para futuros jogos, mas não listado
+(15, 'Unity Engine'),                    -- Amplamente usado para jogos diversos
+(16, 'Valve Anti-Cheat (VAC)'),         -- Usado em Counter-Strike 2
+(17, 'Easy Anti-Cheat (EAC)'),          -- Usado em Helldivers™ 2, Forza Horizon 5, The Last Of Us Part I, DayZ
+(18, 'BattlEye Anti-Cheat'),            -- Usado em DayZ, Red Dead Redemption 2, Fortnite
+(19, 'Rockstar Advanced Anti-Cheat'),   -- Usado em Red Dead Redemption 2 e Grand Theft Auto V
+(20, 'PunkBuster'),                     -- Usado em jogos antigos, mas pode ser adaptado
+(21, 'FaceIt Anti-Cheat'),              -- Usado em torneios de Counter-Strike 2
+(22, 'Ricochet Anti-Cheat'),            -- Usado em Call of Duty, pode ser implementado em FPS
+(23, 'Telltale Engine Security'),       -- Segurança interna usada pela Telltale Games
+(24, 'Insomniac Anti-Tamper'),          -- Pode ser implementado em Marvel’s Spider-Man Remastered
+(25, 'Denuvo Anti-Tamper'),             -- Utilizado em vários jogos para proteção contra pirataria
+(26, 'Arxan Anti-Tamper'),              -- Proteção contra engenharia reversa
+(27, 'Hyperion Anti-Cheat'),            -- Nova tecnologia em alguns jogos online
+(28, 'Microsoft Defender Game Security'), -- Segurança integrada no Windows para jogos
+(29, 'Epic Online Services (EOS) Anti-Cheat'), -- Ferramenta anti-cheat da Epic Games
+(30, 'FairFight');                      -- Utilizado em jogos da EA, pode ser implementado em shooters
