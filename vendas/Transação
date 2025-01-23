@@ -16,7 +16,7 @@ SELECT
     t.Distributor_ID, 
     t.Transaction_Type, 
     t.Transaction_Date,
-    pr.Preco AS Preco_do_Jogo
-FROM Transactions t
-JOIN Preco pr ON t.Preco_ID = pr.Preco_ID
+    p.Preco AS Preco_do_Jogo
+FROM Transacao t
+JOIN Preco p ON t.Preco_ID = p.Preco_ID
 JOIN Jogo j ON t.Game_ID = j.App_ID;
