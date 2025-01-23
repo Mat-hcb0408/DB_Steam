@@ -1,10 +1,22 @@
-create table compra(
-ID_Compra  int primary key not null auto_increment,
-ID_Usuario int,
-Data_compra DATETIME DEFAULT CURRENT_TIMESTAMP,
-Metodo_pagamento ENUM('Credit Card', 'PayPal', 'Gift Card', 'Crypto') NOT NULL,
-Preco_ID int,
-FOREIGN KEY (ID_Usuario) REFERENCES usuario(ID_Usuario),
-FOREIGN KEY (App_ID) REFERENCES jogo(App_ID),
-FOREIGN KEY (Preco_ID) REFERENCES preco(Preco_ID)
+CREATE TABLE IF NOT EXISTS Compra (
+    ID_Compra INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    ID_Usuario INT,
+    ID_Jogo INT NOT NULL,  -- Corrigido para referenciar o jogo
+    Data_Compra DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Metodo_Pagamento ENUM('Credit Card', 'PayPal', 'Gift Card', 'Crypto') NOT NULL,
+    Preco_ID INT NOT NULL,  -- Coluna para linkar o preço
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID_Usuario),
+    FOREIGN KEY (ID_Jogo) REFERENCES Jogo(App_ID),  -- Referência à tabela Jogo
+    FOREIGN KEY (Preco_ID) REFERENCES Preco(Preco_ID)  -- Referência à tabela Preco
 );
+
+SELECT 
+    c.ID_Compra, 
+    c.ID_Usuario, 
+    c.Data_Compra, 
+    c.Metodo_Pagamento, 
+    j.Nome AS Nome_do_Jogo, 
+    p.Preco AS Preco_do_Jogo
+FROM Compra c
+JOIN Jogo j ON c.ID_Jogo = j.App_ID
+JOIN Preco p ON c.Preco_ID = p.Preco_ID;
