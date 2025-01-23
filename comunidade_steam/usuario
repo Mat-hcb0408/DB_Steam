@@ -7,23 +7,23 @@ Email varchar(100) not null,
 Senha varchar(10)
 );
 
-INSERT INTO usuarios (Nome, Nick_name, Email, Senha)
+INSERT INTO usuarios (ID_Usuario, Nome, Nick_name, Email, Senha)
 VALUES 
-  ('Matheus Henrinque', 'Star_Ghost0408', 'matheus.henrinque@gmail.com', 'senha123'),
-  ('Thallys Malaquias', 'Thallys_San', 'thallys.malaquias@hotmail.com', 'senha456'),
-  ('Davidson Fernandes', 'Fdavidson91', 'davidson.fernandes@yahoo.com', 'senha789'),
-  ('Guilherme Rocha', '919Calabreso', 'guilherme.rocha@outlook.com', 'senha101'),
-  ('Ryan Gabriel', 'Camisinho', 'ryan.gabriel@gmail.com', 'senha202'),
-  ('Rafael Pereira', 'RoubeiTeuLoot', 'rafael.pereira@live.com', 'senha303'),
-  ('Pedro Henrique', 'TropeceiNoHDMI', 'pedro.henrique@gmail.com', 'senha404'),
-  ('Marcos Silva', 'LagMental200ms9', 'marcos.silva@yahoo.com', 'senha505'),
-  ('João Souza', 'SeuModemCaiu', 'joao.souza@hotmail.com', 'senha606'),
-  ('Bruno Lima', 'BalaPerdidaVIP', 'bruno.lima@live.com', 'senha707'),
-  ('André Almeida', 'AltF4ProPlayer', 'andre.almeida@gmail.com', 'senha808'),
-  ('Eduardo Campos', 'PuloErrado123', 'eduardo.campos@yahoo.com', 'senha909'),
-  ('Fernanda Costa', 'Fedora Linux', 'fernanda.costa@gmail.com', 'senha1010'),
-  ('Tiago Rodrigues', 'TioDoWiFiGratis', 'tiago.rodrigues@hotmail.com', 'senha1111'),
-  ('Renan Faria', 'HeadshotNaSorte', 'renan.faria@yahoo.com', 'senha1212'),
-  ('Gustavo Lopes', 'CamperDoAno', 'gustavo.lopes@gmail.com', 'senha1313'),
-  ('Ana Paula', 'NaFilaDoRespawn', 'ana.paula@hotmail.com', 'senha1414'),
-  ('Caio Matos', 'CtrlAltTilt', 'caio.matos@yahoo.com', 'senha1515');
+  (1,'Matheus Henrinque', 'Star_Ghost0408', 'matheus.henrinque@gmail.com', 'senha123'),
+  (2,'Thallys Malaquias', 'Thallys_San', 'thallys.malaquias@hotmail.com', 'senha456'),
+  (3,'Davidson Fernandes', 'Fdavidson91', 'davidson.fernandes@yahoo.com', 'senha789'),
+  (4,'Guilherme Rocha', '919Calabreso', 'guilherme.rocha@outlook.com', 'senha101'),
+  (5,'Ryan Gabriel', 'Camisinho', 'ryan.gabriel@gmail.com', 'senha202'),
+  (6,'Rafael Pereira', 'RoubeiTeuLoot', 'rafael.pereira@live.com', 'senha303'),
+  (7,'Pedro Henrique', 'TropeceiNoHDMI', 'pedro.henrique@gmail.com', 'senha404'),
+  (8,'Marcos Silva', 'LagMental200ms9', 'marcos.silva@yahoo.com', 'senha505'),
+  (9,'João Souza', 'SeuModemCaiu', 'joao.souza@hotmail.com', 'senha606'),
+  (10,'Bruno Lima', 'BalaPerdidaVIP', 'bruno.lima@live.com', 'senha707'),
+  (11,'André Almeida', 'AltF4ProPlayer', 'andre.almeida@gmail.com', 'senha808'),
+  (12,'Eduardo Campos', 'PuloErrado123', 'eduardo.campos@yahoo.com', 'senha909'),
+  (13,'Fernanda Costa', 'Fedora Linux', 'fernanda.costa@gmail.com', 'senha1010'),
+  (14,'Tiago Rodrigues', 'TioDoWiFiGratis', 'tiago.rodrigues@hotmail.com', 'senha1111'),
+  (15,'Renan Faria', 'HeadshotNaSorte', 'renan.faria@yahoo.com', 'senha1212'),
+  (16,'Gustavo Lopes', 'CamperDoAno', 'gustavo.lopes@gmail.com', 'senha1313'),
+  (17,'Ana Paula', 'NaFilaDoRespawn', 'ana.paula@hotmail.com', 'senha1414'),
+  (18,'Caio Matos', 'CtrlAltTilt', 'caio.matos@yahoo.com', 'senha1515');
