@@ -26,3 +26,16 @@ INSERT INTO usuario_badge (ID_Usuario, ID_Badge) VALUES
 (16, 4), (16, 6), (16, 10),
 (17, 1), (17, 3), (17, 7), (17, 13),
 (18, 5), (18, 8), (18, 12);
+
+USE steam;
+SELECT 
+    usuario.Nome AS Usuario_Nome,
+    GROUP_CONCAT(badges.Nome ORDER BY badges.Nome ASC) AS Badges_Obtidas
+FROM 
+    usuario
+JOIN 
+    usuario_badge ub ON usuario.ID_Usuario = ub.ID_Usuario
+JOIN 
+    badges ON ub.ID_Badge = badges.ID_Badge
+GROUP BY 
+    usuario.ID_Usuario;
