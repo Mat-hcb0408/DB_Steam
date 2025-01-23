@@ -5,3 +5,30 @@ CREATE TABLE IF NOT EXISTS Preco (
     Data_Atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE
 );
+
+INSERT INTO Preco (App_ID, Preco)
+VALUES
+(1, 0.00),
+(2, 32.99),
+(3, 299.90),
+(4, 199.90),
+(5, 8241.00),
+(6, 0.00),
+(7, 80.00),
+(8, 80.00),
+(9, 60.00),
+(10, 90.00),
+(11, 0.00),
+(12, 90.00),
+(13, 0.00),
+(14, 0.00),
+(15, 0.00);
+
+use steam;
+SELECT 
+    j.Nome AS Nome_Jogo, 
+    p.Preco AS Preco_Jogo,
+    p.Data_Atualizacao
+FROM Preco p
+JOIN Jogo j ON p.App_ID = j.App_ID
+ORDER BY j.App_ID;
