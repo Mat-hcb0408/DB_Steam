@@ -11,7 +11,7 @@ CREATE TABLE Transacao (
     FOREIGN KEY (Preco_ID) REFERENCES Preco(Preco_ID)  -- Referência ao Preco_ID da tabela Preco
 );
 
-
+use steam;
 INSERT INTO Transacao (Game_ID, Distributor_ID, Preco_ID, Transaction_Type)
 VALUES
 (1, 1, 1, 'Licensing'),               -- Counter-Strike 2
