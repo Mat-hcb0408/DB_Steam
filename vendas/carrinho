@@ -1,66 +1,17 @@
-CREATE DATABASE Steam;
-
 USE Steam;
-
-CREATE TABLE Usuario (
-  ID_Usuario INT AUTO_INCREMENT PRIMARY KEY,
-  Nome VARCHAR(50)
+create table carrinho(
+ID_Usuario int,
+App_ID int,
+Primary key (ID_Usuario, App_ID),
+foreign key(App_ID) references Jogo(App_ID),
+foreign key(ID_Usuario) references usuario(ID_Usuario)
+);
+USE Steam;
+create table carrinho(
+ID_Usuario int,
+App_ID int,
+Primary key (ID_Usuario, App_ID),
+foreign key(App_ID) references Jogo(App_ID),
+foreign key(ID_Usuario) references usuario(ID_Usuario)
 );
 
-CREATE TABLE Jogo (
-  App_ID INT AUTO_INCREMENT PRIMARY KEY,
-  Nome_Jogo VARCHAR(50),
-  Preco DECIMAL(10, 2)
-);
-
-CREATE TABLE Carrinho (
-  ID_Usuario INT,
-  App_ID INT,
-  PRIMARY KEY (ID_Usuario, App_ID),
-  FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID),
-  FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID_Usuario)
-);
-
-INSERT INTO Usuario (Nome)
-VALUES
-('João'),
-('Maria'),
-('Pedro'),
-('Ana'),
-('Luiz');
-
-INSERT INTO Jogo (Nome_Jogo, Preco)
-VALUES
-('Jogo 1', 19.99),
-('Jogo 2', 29.99),
-('Jogo 3', 39.99),
-('Jogo 4', 49.99),
-('Jogo 5', 59.99),
-('Jogo 6', 69.99),
-('Jogo 7', 79.99),
-('Jogo 8', 89.99),
-('Jogo 9', 99.99),
-('Jogo 10', 109.99),
-('Jogo 11', 119.99),
-('Jogo 12', 129.99),
-('Jogo 13', 139.99),
-('Jogo 14', 149.99);
-
-INSERT INTO Carrinho (ID_Usuario, App_ID)
-VALUES
-(1, 1),
-(1, 2),
-(2, 3),
-(3, 4),
-(4, 5),
-(5, 6),
-(1, 7),
-(2, 8),
-(3, 9),
-(4, 10),
-(5, 11),
-(1, 12),
-(2, 13),
-(3, 14);
-
-Select * from Carrinho
