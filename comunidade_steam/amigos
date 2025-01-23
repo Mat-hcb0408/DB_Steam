@@ -8,3 +8,36 @@ create table amigos(
     check (ID_usuario1 <> ID_usuario2) -- Impede um usuário de ser amigo dele mesmo
 );
 
+INSERT INTO amigos (ID_usuario1, ID_usuario2) VALUES
+-- Os cinco definidos como amigos entre si
+(1, 2), (1, 3), (1, 4), (1, 5),
+(2, 1), (2, 3), (2, 4), (2, 5),
+(3, 1), (3, 2), (3, 4), (3, 5),
+(4, 1), (4, 2), (4, 3), (4, 5),
+
+-- Amizades aleatórias entre outros usuários
+(6, 7), (6, 8), (6, 9), 
+(7, 10), (7, 11), 
+(8, 12), (8, 13), (8, 14), 
+(9, 15), (9, 16), 
+(10, 17), (10, 18), 
+(11, 12), (11, 13), 
+(12, 14), (12, 15), 
+(13, 16), (13, 17), 
+(14, 18), 
+(15, 16), 
+(16, 17), (16, 18), 
+(17, 18);
+
+USE steam;
+SELECT 
+    u1.Nome AS Usuario_Nome,
+    GROUP_CONCAT(u2.Nome ORDER BY u2.Nome ASC) AS Amigos
+FROM 
+    amigos
+JOIN 
+    usuario u1 ON amigos.ID_usuario1 = u1.ID_Usuario
+JOIN 
+    usuario u2 ON amigos.ID_usuario2 = u2.ID_Usuario
+GROUP BY 
+    u1.ID_Usuario;
