@@ -11,13 +11,37 @@ CREATE TABLE Transacao (
     FOREIGN KEY (Preco_ID) REFERENCES Preco(Preco_ID)  -- Referência ao Preco_ID da tabela Preco
 );
 
+
+INSERT INTO Transacao (Game_ID, Distributor_ID, Preco_ID, Transaction_Type)
+VALUES
+(1, 1, 1, 'Licensing'),               -- Counter-Strike 2
+(2, 2, 2, 'Revenue Share'),           -- Terraria
+(3, 3, 3, 'Other'),                   -- Red Dead Redemption 2
+(4, 4, 4, 'Licensing'),               -- The Last Of Us Part II
+(5, 3, 5, 'Revenue Share'),           -- Grand Theft Auto V
+(6, 5, 6, 'Other'),                   -- The Walking Dead: The Final Season
+(7, 6, 7, 'Licensing'),               -- Forza Horizon 5
+(8, 7, 8, 'Revenue Share'),           -- Poppy Playtime - Chapter 2
+(9, 4, 9, 'Licensing'),               -- The Last Of Us Part I
+(10, 4, 10, 'Other'),                 -- Marvel’s Spider-Man Remastered
+(11, 4, 11, 'Revenue Share'),         -- Helldivers™ 2
+(12, 8, 12, 'Licensing'),             -- Stardew Valley
+(13, 9, 13, 'Other'),                 -- DayZ
+(14, 10, 14, 'Revenue Share'),        -- Euro Truck Simulator 2
+(15, 11, 15, 'Licensing');            -- The Elder Scrolls V: Skyrim Special Edition
+
+
+use steam;
 SELECT 
     t.Transaction_ID, 
-    t.Game_ID, 
-    t.Distributor_ID, 
+    j.Nome AS Nome_Jogo, 
+    p.Nome AS Nome_Distribuidor, 
+    pr.Preco AS Preco_Jogo, 
     t.Transaction_Type, 
-    t.Transaction_Date,
-    p.Preco AS Preco_do_Jogo
+    t.Transaction_Date
 FROM Transacao t
-JOIN Preco p ON t.Preco_ID = p.Preco_ID
-JOIN Jogo j ON t.Game_ID = j.App_ID;
+JOIN Jogo j ON t.Game_ID = j.App_ID
+JOIN Publisher p ON t.Distributor_ID = p.Publisher_ID
+JOIN Preco pr ON t.Preco_ID = pr.Preco_ID
+ORDER BY t.Transaction_Date DESC;
+
