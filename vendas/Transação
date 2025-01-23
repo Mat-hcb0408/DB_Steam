@@ -1,10 +1,11 @@
+use steam;
 CREATE TABLE Transacao (
     Transaction_ID INT AUTO_INCREMENT PRIMARY KEY,
     Game_ID INT NOT NULL,
     Distributor_ID INT NOT NULL,
     Preco_ID INT NOT NULL,  -- Nova coluna para linkar o preço
     Transaction_Type ENUM('Licensing', 'Revenue Share', 'Other') NOT NULL,
-    Transaction_Date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Transaction_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (Game_ID) REFERENCES Jogo(App_ID),
     FOREIGN KEY (Distributor_ID) REFERENCES Publisher(Publisher_ID),
     FOREIGN KEY (Preco_ID) REFERENCES Preco(Preco_ID)  -- Referência ao Preco_ID da tabela Preco
