@@ -6,12 +6,3 @@ Primary key (ID_Usuario, App_ID),
 foreign key(App_ID) references Jogo(App_ID),
 foreign key(ID_Usuario) references usuario(ID_Usuario)
 );
-USE Steam;
-create table carrinho(
-ID_Usuario int,
-App_ID int,
-Primary key (ID_Usuario, App_ID),
-foreign key(App_ID) references Jogo(App_ID),
-foreign key(ID_Usuario) references usuario(ID_Usuario)
-);
-
