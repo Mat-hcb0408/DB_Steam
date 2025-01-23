@@ -1,4 +1,4 @@
-use steam;
+USE steam;
 CREATE TABLE IF NOT EXISTS Avaliacao (
     ID_Avaliacao INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     ID_Usuario INT NOT NULL,           -- ID do usuário que fez a avaliação
@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS Avaliacao (
     Comentario TEXT,                   -- Comentário opcional do usuário
     Data_Avaliacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  -- Data da avaliação
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID_Usuario),  -- Chave estrangeira para usuário
-    FOREIGN KEY (App_ID) REFERENCES jogo(App_ID)             -- Chave estrangeira para jogo
+    FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID),              -- Chave estrangeira para jogo
+    CONSTRAINT unique_user_game UNIQUE (ID_Usuario, App_ID)    -- Restrição para garantir que um usuário não possa avaliar o mesmo jogo mais de uma vez
 );
 
 use steam;
