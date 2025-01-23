@@ -77,3 +77,16 @@ insert into biblioteca(ID_Usuario,App_ID) values
 (15,13),
 (15,14),
 (15,15);
+
+USE steam;
+SELECT 
+    usuario.Nome AS Usuario_Nome,
+    GROUP_CONCAT(jogo.Nome ORDER BY jogo.Nome ASC) AS Jogos_Possuidos
+FROM 
+    usuario
+JOIN 
+    biblioteca b ON usuario.ID_Usuario = b.ID_Usuario
+JOIN 
+    jogo ON b.App_ID = jogo.App_ID
+GROUP BY 
+    usuario.ID_Usuario;
