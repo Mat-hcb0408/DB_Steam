@@ -10,33 +10,13 @@ CREATE TABLE IF NOT EXISTS Avaliacao (
     FOREIGN KEY (App_ID) REFERENCES jogo(App_ID)             -- Chave estrangeira para jogo
 );
 
--- consulta avaliação de jogos
-SELECT 
-    a.ID_Avaliacao, 
-    u.Nome AS Nome_Usuario, 
-    a.Nota, 
-    a.Comentario, 
-    a.Data_Avaliacao
-FROM Avaliacao a
-JOIN Usuario u ON a.ID_Usuario = u.ID_Usuario
-JOIN Jogo j ON a.ID_Jogo = j.App_ID
-WHERE a.App_ID = [ID_DO_JOGO];
-
--- consulta media avaliacao de jogos
-SELECT 
-    j.Nome AS App_ID, 
-    AVG(a.Nota) AS Media_Avaliacao
-FROM Avaliacao a
-JOIN Jogo j ON a.App_ID = j.App_ID
-WHERE a.App_ID = [ID_DO_JOGO]
-GROUP BY j.Nome;
-
+use steam;
 INSERT INTO Avaliacao (ID_Usuario, App_ID, Nota, Comentario) VALUES 
 (1, 11, 9, 'Jogo incrível! Adorei a jogabilidade e gráficos.'),
 (2, 2, 7, 'Bom jogo, mas poderia ser melhor em termos de história.'),
 (3, 3, 8, 'Ótima experiência, valeu a pena jogar.'),
 (4, 4, 6, 'Jogo mediano, algumas partes são chatas.'),
-(5, 5, 10, 'Fantástico! Melhor jogo que já joguei.'),
+(5, 5, 10, 'Fantástico! Melhor jogo que já joguei.'),	
 (6, 6, 5, 'Não gostei muito, achei repetitivo.'),
 (7, 7, 7, 'Diversão garantida, mas com alguns problemas técnicos.'),
 (8, 8, 8, 'Jogo bem balanceado e divertido.'),
@@ -47,3 +27,23 @@ INSERT INTO Avaliacao (ID_Usuario, App_ID, Nota, Comentario) VALUES
 (13, 13, 8, 'Muito bom, mas precisa de algumas melhorias.'),
 (14, 14, 9, 'Quase perfeito, pequenos detalhes incomodam.'),
 (15, 15, 7, 'Jogo legal, mas pode ser cansativo após um tempo.');
+
+use steam;
+SELECT 
+    a.ID_Avaliacao, 
+    u.Nome AS Nome_Usuario, 
+    a.Nota, 
+    a.Comentario, 
+    a.Data_Avaliacao
+FROM Avaliacao a
+JOIN Usuario u ON a.ID_Usuario = u.ID_Usuario
+JOIN Jogo j ON a.App_ID = j.App_ID
+WHERE a.App_ID = 11;
+
+SELECT 
+    j.Nome AS App_ID, 
+    AVG(a.Nota) AS Media_Avaliacao
+FROM Avaliacao a
+JOIN Jogo j ON a.App_ID = j.App_ID
+WHERE a.App_ID = 11
+GROUP BY j.Nome;
