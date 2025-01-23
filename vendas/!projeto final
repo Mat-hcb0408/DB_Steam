@@ -1,0 +1,300 @@
+Use steam;
+CREATE TABLE IF NOT EXISTS Preco (
+    Preco_ID INT AUTO_INCREMENT PRIMARY KEY,
+    App_ID INT NOT NULL,
+    Preco DECIMAL(10,2) NOT NULL,
+    Data_Atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE
+);
+
+insert into preco (App_ID,Preco)
+values
+(1,00.00),
+(2,32.99),
+(3,299.90),
+(4,199.90),
+(5,82.41),
+(6,59.99),
+(7,124.50),
+(8,20.69),
+(9,249.90),
+(10,249.90),
+(11,199.50),
+(12,24.99),
+(13,149.99),
+(14,61.99),
+(15,149.00);
+
+SELECT 
+    j.Nome AS Nome_Jogo, 
+    p.Preco AS Preco_Jogo,
+    p.Data_Atualizacao
+FROM Preco p
+JOIN Jogo j ON p.App_ID = j.App_ID
+ORDER BY j.App_ID;
+
+create table carrinho(
+ID_Usuario int,
+App_ID int,
+Primary key (ID_Usuario, App_ID),
+foreign key(App_ID) references Jogo(App_ID),
+foreign key(ID_Usuario) references usuario(ID_Usuario)
+);
+
+
+INSERT INTO	carrinho (Id_usuario, App_ID)
+VALUES
+('1','1'),
+('1','11'),
+('2','1'),
+('2','2'),
+('2','3'),
+('2','5'),
+('2','12'),
+('2','14'),
+('2','15'),
+('3','1'),
+('3','5'),
+('3','6'),
+('3','8'),
+('4','1'),
+('5','1'),
+('5','5'),
+('6','3'),
+('6','4'),
+('6','6'),
+('6','10'),
+('7','1'),
+('7','11'),
+('7','13'),
+('7','14'),
+('7','15'),
+('8','2'),
+('8','8'),
+('8','12'),
+('8','14'),
+('9','1'),
+('9','4'),
+('9','9'),
+('9','11'),
+('10','10'),
+('10','11'),
+('10','12'),
+('10','13'),
+('10','14'),
+('10','15'),
+('11','2'),
+('11','3'),
+('11','6'),
+('12','7'),
+('12','9'),
+('12','10'),
+('12','11'),
+('12','14'),
+('13','4'),
+('13','9'),
+('13','10'),
+('13','11'),
+('14','14'),
+('15','1'),
+('15','2'),
+('15','3'),
+('15','14');
+
+SELECT 
+    c.ID_Usuario, 
+    u.Nome AS Nome_Usuario, 
+    GROUP_CONCAT(j.Nome ORDER BY j.Nome ASC SEPARATOR ', ') AS Jogos_Carrinho
+FROM carrinho c
+JOIN Usuario u ON c.ID_Usuario = u.ID_Usuario
+JOIN Jogo j ON c.App_ID = j.App_ID
+GROUP BY c.ID_Usuario, u.Nome
+ORDER BY c.ID_Usuario;
+
+CREATE TABLE IF NOT EXISTS Compra (
+    ID_Compra INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    ID_Usuario INT,
+    ID_Jogo INT NOT NULL,  -- Corrigido para referenciar o jogo
+    Data_Compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Metodo_Pagamento ENUM('Credit Card', 'PIX', 'PayPal', 'Gift Card', 'Crypto'),
+    Preco_ID INT NOT NULL,  -- Coluna para linkar o preço
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID_Usuario),
+    FOREIGN KEY (ID_Jogo) REFERENCES Jogo(App_ID),  -- Referência à tabela Jogo
+    FOREIGN KEY (Preco_ID) REFERENCES Preco(Preco_ID)  -- Referência à tabela Preco
+);
+
+INSERT INTO Compra (ID_Usuario, ID_Jogo, Metodo_Pagamento, Preco_ID) 
+VALUES 
+(1, 1, NULL, 1),  
+(1, 11, 'PIX', 11), 
+(2, 1, NULL, 1), 
+(2, 2, 'PayPal', 2), 
+(2, 3, 'Crypto', 3), 
+(2, 5, 'Credit Card', 5), 
+(2, 12, 'Credit Card', 12), 
+(2, 14, 'PayPal', 14), 
+(2, 15, 'PIX', 15),  
+(3, 1, NULL, 1), 
+(3, 5, 'Crypto', 5), 
+(3, 6, 'Credit Card', 6), 
+(3, 8, 'PayPal', 8), 
+(4, 1, NULL, 1), 
+(5, 1, NULL, 1), 
+(5, 5, 'PayPal', 5),  
+(6, 3, 'PIX', 3),    
+(6, 4, 'Credit Card', 4),  
+(6, 6, 'Crypto', 6),  
+(6, 10, 'PIX', 10),   
+(7, 1, NULL, 1),  
+(7, 11, 'PayPal', 11),  
+(7, 13, 'Crypto', 13),  
+(7, 14, 'PayPal', 14),  
+(7, 15, 'Crypto', 15),  
+(8, 2, 'PIX', 2),   
+(8, 8, 'PIX', 8),   
+(8, 12, 'PayPal', 12),  
+(8, 14, 'Crypto', 14),  
+(9, 1, NULL, 1),  
+(9, 4, 'Crypto', 4),  
+(9, 9, 'PayPal', 9),  
+(9, 11, 'PIX', 11),  
+(10, 10, 'Credit Card', 10),  
+(10, 11, 'PayPal', 11),  
+(10, 12, 'PIX', 12),  
+(10, 13, 'PIX', 13),  
+(10, 14, 'PIX', 14),  
+(10, 15, 'PIX', 15),  
+(11, 1, NULL, 1),  
+(11, 2, 'PIX', 2),  
+(11, 3, 'PIX', 3),  
+(11, 4, 'Credit Card', 4),  
+(11, 5, 'Credit Card', 5),  
+(11, 6, 'Credit Card', 6),  
+(12, 7, 'Credit Card', 7),  
+(12, 9, 'PayPal', 9),  
+(12, 10, 'Crypto', 10),  
+(12, 11, 'Credit Card',11),  
+(12, 14, 'PIX', 14),  
+(13, 4, 'PIX', 4),  
+(13, 9, 'Credit Card', 9),  
+(13, 10, 'Credit Card', 10),  
+(13, 11, 'Credit Card', 11),  
+(14, 14, 'Credit Card', 14),  
+(15, 1, NULL, 1),  
+(15, 2, 'PIX', 2),  
+(15, 3, 'Credit Card', 3),  
+(15, 4, 'PIX', 14),  
+(15, 5, 'Credit Card', 5),  
+(15, 6, 'Credit Card', 6),  
+(15, 7, 'Credit Card', 7),  
+(15, 8, 'PIX', 8),  
+(15, 9, 'PIX', 9),  
+(15, 10, 'PIX', 10),  
+(15, 11, 'Credit Card', 11),  
+(15, 12, 'PayPal', 12),  
+(15, 13, 'PayPal', 13),  
+(15, 14, 'PayPal', 14),  
+(15, 15, 'PayPal', 15);
+
+SELECT 
+    c.ID_Compra, 
+    c.ID_Usuario, 
+    c.Data_Compra, 
+    c.Metodo_Pagamento, 
+    j.Nome AS Nome_do_Jogo, 
+    p.Preco AS Preco_do_Jogo
+FROM Compra c
+JOIN Jogo j ON c.ID_Jogo = j.App_ID
+JOIN Preco p ON c.Preco_ID = p.Preco_ID;
+
+CREATE TABLE Transacao (
+    Transaction_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Game_ID INT NOT NULL,
+    Distributor_ID INT NOT NULL,
+    Preco_ID INT NOT NULL,  -- Nova coluna para linkar o preço
+    Transaction_Type ENUM('Licensing', 'Revenue Share', 'Other') NOT NULL,
+    Transaction_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (Game_ID) REFERENCES Jogo(App_ID),
+    FOREIGN KEY (Distributor_ID) REFERENCES Publisher(Publisher_ID),
+    FOREIGN KEY (Preco_ID) REFERENCES Preco(Preco_ID)  -- Referência ao Preco_ID da tabela Preco
+);
+
+INSERT INTO Transacao (Game_ID, Distributor_ID, Preco_ID, Transaction_Type)
+VALUES
+(1, 1, 1, 'Licensing'),               -- Counter-Strike 2
+(2, 2, 2, 'Revenue Share'),           -- Terraria
+(3, 3, 3, 'Other'),                   -- Red Dead Redemption 2
+(4, 4, 4, 'Licensing'),               -- The Last Of Us Part II
+(5, 3, 5, 'Revenue Share'),           -- Grand Theft Auto V
+(6, 5, 6, 'Other'),                   -- The Walking Dead: The Final Season
+(7, 6, 7, 'Licensing'),               -- Forza Horizon 5
+(8, 7, 8, 'Revenue Share'),           -- Poppy Playtime - Chapter 2
+(9, 4, 9, 'Licensing'),               -- The Last Of Us Part I
+(10, 4, 10, 'Other'),                 -- Marvel’s Spider-Man Remastered
+(11, 4, 11, 'Revenue Share'),         -- Helldivers™ 2
+(12, 8, 12, 'Licensing'),             -- Stardew Valley
+(13, 9, 13, 'Other'),                 -- DayZ
+(14, 10, 14, 'Revenue Share'),        -- Euro Truck Simulator 2
+(15, 11, 15, 'Licensing');            -- The Elder Scrolls V: Skyrim Special Edition
+
+
+SELECT 
+    t.Transaction_ID, 
+    j.Nome AS Nome_Jogo, 
+    p.Nome AS Nome_Distribuidor, 
+    pr.Preco AS Preco_Jogo, 
+    t.Transaction_Type, 
+    t.Transaction_Date
+FROM Transacao t
+JOIN Jogo j ON t.Game_ID = j.App_ID
+JOIN Publisher p ON t.Distributor_ID = p.Publisher_ID
+JOIN Preco pr ON t.Preco_ID = pr.Preco_ID
+ORDER BY t.Transaction_Date DESC;
+
+CREATE TABLE IF NOT EXISTS Avaliacao (
+    ID_Avaliacao INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    ID_Usuario INT NOT NULL,           -- ID do usuário que fez a avaliação
+    App_ID INT NOT NULL,              -- ID do jogo avaliado
+    Nota INT NOT NULL CHECK (Nota BETWEEN 1 AND 10),  -- Nota de 1 a 10
+    Comentario TEXT,                   -- Comentário opcional do usuário
+    Data_Avaliacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  -- Data da avaliação
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID_Usuario),  -- Chave estrangeira para usuário
+    FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID),              -- Chave estrangeira para jogo
+    CONSTRAINT unique_user_game UNIQUE (ID_Usuario, App_ID)    -- Restrição para garantir que um usuário não possa avaliar o mesmo jogo mais de uma vez
+);
+
+INSERT INTO Avaliacao (ID_Usuario, App_ID, Nota, Comentario) VALUES 
+(1, 11, 9, 'Jogo incrível! Adorei a jogabilidade e gráficos.'),
+(2, 2, 7, 'Bom jogo, mas poderia ser melhor em termos de história.'),
+(3, 3, 8, 'Ótima experiência, valeu a pena jogar.'),
+(4, 4, 6, 'Jogo mediano, algumas partes são chatas.'),
+(5, 5, 10, 'Fantástico! Melhor jogo que já joguei.'),	
+(6, 6, 5, 'Não gostei muito, achei repetitivo.'),
+(7, 7, 7, 'Diversão garantida, mas com alguns problemas técnicos.'),
+(8, 8, 8, 'Jogo bem balanceado e divertido.'),
+(9, 9, 9, 'Adorei! Jogabilidade fluida e bem feita.'),
+(10, 10, 6, 'Esperava mais, mas ainda assim é bom.'),
+(11, 1, 7, 'Bom jogo, mas senti falta de algumas funcionalidades.'),
+(12, 12, 10, 'Perfeito! Não tenho nada a reclamar.'),
+(13, 13, 8, 'Muito bom, mas precisa de algumas melhorias.'),
+(14, 14, 9, 'Quase perfeito, pequenos detalhes incomodam.'),
+(15, 15, 7, 'Jogo legal, mas pode ser cansativo após um tempo.');
+
+SELECT 
+    a.ID_Avaliacao, 
+    u.Nome AS Nome_Usuario, 
+    a.Nota, 
+    a.Comentario, 
+    a.Data_Avaliacao
+FROM Avaliacao a
+JOIN Usuario u ON a.ID_Usuario = u.ID_Usuario
+JOIN Jogo j ON a.App_ID = j.App_ID
+WHERE a.App_ID = 11;
+
+SELECT 
+    j.Nome AS App_ID, 
+    AVG(a.Nota) AS Media_Avaliacao
+FROM Avaliacao a
+JOIN Jogo j ON a.App_ID = j.App_ID
+WHERE a.App_ID = 11
+GROUP BY j.Nome;
