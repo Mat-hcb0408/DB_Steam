@@ -6,20 +6,20 @@ nome varchar(355),
 imagem text
 );
 
-insert into Badges (nome)
+insert into Badges (ID_Badge,nome,imagem)
 values 
-('Community Contributor','https://community.cloudflare.steamstatic.com/public/images/badges/48_communitycontributor/1_80.png'),
-('2022 Steam Cup','https://community.cloudflare.steamstatic.com/public/images/badges/generic/RacingSale2022_80.png'),
-('Steam Awards Nomination Committee 2018','https://community.cloudflare.steamstatic.com/public/images/badges/30_steamawardnominations/level04_80.png'),
-('Steam Community Moderator','https://community.cloudflare.steamstatic.com/public/images/badges/generic/RetiredModerator_80.png'),
-('Community Ambassador','https://community.cloudflare.steamstatic.com/public/images/badges/01_community/community03_80.png'),
-('Steam Summer Camp','https://community.cloudflare.steamstatic.com/public/images/badges/05_summer2011/tickets80.png'),
-('The Potato Sack','https://community.cloudflare.steamstatic.com/public/images/badges/03_potato/potato03_80.png'),
-('Owned Games','https://community.cloudflare.steamstatic.com/public/images/badges/13_gamecollector/40000_80.png'),
-('The Paranormal Professor','https://community.cloudflare.steamstatic.com/public/images/badges/51_summer2021/54.png'),
-('The Ghost Detective','https://community.cloudflare.steamstatic.com/public/images/badges/51_summer2021/55.png'),
-('Salien','https://community.cloudflare.steamstatic.com/public/images/badges/29_salien/6_80.png'),
-('Red Herring','https://community.cloudflare.steamstatic.com/public/images/badges/24_winter2015_arg_red_herring/red_herring.png'),
-('Steamworks Developer','https://community.cloudflare.steamstatic.com/public/images/badges/generic/GameDeveloper_80.png'),
-('Years of Service','https://community.cloudflare.steamstatic.com/public/images/badges/02_years/steamyears20anni_80.png'),
-('Steam Holiday Sale 2011','https://community.cloudflare.steamstatic.com/public/images/badges/06_winter2011/coal03_80.png');
+(1,'Community Contributor','https://community.cloudflare.steamstatic.com/public/images/badges/48_communitycontributor/1_80.png'),
+(2,'2022 Steam Cup','https://community.cloudflare.steamstatic.com/public/images/badges/generic/RacingSale2022_80.png'),
+(3,'Steam Awards Nomination Committee 2018','https://community.cloudflare.steamstatic.com/public/images/badges/30_steamawardnominations/level04_80.png'),
+(4,'Steam Community Moderator','https://community.cloudflare.steamstatic.com/public/images/badges/generic/RetiredModerator_80.png'),
+(5,'Community Ambassador','https://community.cloudflare.steamstatic.com/public/images/badges/01_community/community03_80.png'),
+(6,'Steam Summer Camp','https://community.cloudflare.steamstatic.com/public/images/badges/05_summer2011/tickets80.png'),
+(7,'The Potato Sack','https://community.cloudflare.steamstatic.com/public/images/badges/03_potato/potato03_80.png'),
+(8,'Owned Games','https://community.cloudflare.steamstatic.com/public/images/badges/13_gamecollector/40000_80.png'),
+(9,'The Paranormal Professor','https://community.cloudflare.steamstatic.com/public/images/badges/51_summer2021/54.png'),
+(10,'The Ghost Detective','https://community.cloudflare.steamstatic.com/public/images/badges/51_summer2021/55.png'),
+(11,'Salien','https://community.cloudflare.steamstatic.com/public/images/badges/29_salien/6_80.png'),
+(12,'Red Herring','https://community.cloudflare.steamstatic.com/public/images/badges/24_winter2015_arg_red_herring/red_herring.png'),
+(13,'Steamworks Developer','https://community.cloudflare.steamstatic.com/public/images/badges/generic/GameDeveloper_80.png'),
+(14,'Years of Service','https://community.cloudflare.steamstatic.com/public/images/badges/02_years/steamyears20anni_80.png'),
+(15,'Steam Holiday Sale 2011','https://community.cloudflare.steamstatic.com/public/images/badges/06_winter2011/coal03_80.png');
