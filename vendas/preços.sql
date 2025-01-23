@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS preço (
 );
 insert into preço (Preço)
 values
-(2300),
+(2380),
 (1270),
 (22394),
 (690),
