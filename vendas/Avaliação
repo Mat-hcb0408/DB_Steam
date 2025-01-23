@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Avaliacao (
     Comentario TEXT,                   -- Comentário opcional do usuário
     Data_Avaliacao DATETIME DEFAULT CURRENT_TIMESTAMP,  -- Data da avaliação
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID_Usuario),  -- Chave estrangeira para usuário
-    FOREIGN KEY (ID_Jogo) REFERENCES Jogo(App_ID)             -- Chave estrangeira para jogo
+    FOREIGN KEY (App_ID) REFERENCES jogo(App_ID)             -- Chave estrangeira para jogo
 );
 
 -- consulta avaliação de jogos
@@ -19,13 +19,13 @@ SELECT
 FROM Avaliacao a
 JOIN Usuario u ON a.ID_Usuario = u.ID_Usuario
 JOIN Jogo j ON a.ID_Jogo = j.App_ID
-WHERE a.ID_Jogo = [ID_DO_JOGO];
+WHERE a.App_ID = [ID_DO_JOGO];
 
 -- consulta media avaliacao de jogos
 SELECT 
-    j.Nome AS Nome_Jogo, 
+    j.Nome AS App_ID, 
     AVG(a.Nota) AS Media_Avaliacao
 FROM Avaliacao a
-JOIN Jogo j ON a.ID_Jogo = j.App_ID
-WHERE a.ID_Jogo = [ID_DO_JOGO]
+JOIN Jogo j ON a.App_ID = j.App_ID
+WHERE a.App_ID = [ID_DO_JOGO]
 GROUP BY j.Nome;
