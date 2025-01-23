@@ -1,0 +1,10 @@
+create table compra(
+ID_Compra  int primary key not null auto_increment,
+ID_Usuario int,
+Data_compra DATETIME DEFAULT CURRENT_TIMESTAMP,
+Metodo_pagamento ENUM('Credit Card', 'PayPal', 'Gift Card', 'Crypto') NOT NULL,
+Preco_ID int,
+FOREIGN KEY (ID_Usuario) REFERENCES usuario(ID_Usuario),
+FOREIGN KEY (App_ID) REFERENCES jogo(App_ID),
+FOREIGN KEY (Preco_ID) REFERENCES preco(Preco_ID)
+);
