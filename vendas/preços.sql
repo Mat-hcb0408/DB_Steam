@@ -1,9 +1,11 @@
-CREATE DATABASE IF NOT EXISTS Teste_Original;
-
-USE Teste_Original;
-
+create database IF NOT EXISTS Steam;
+use Steam;
 CREATE TABLE IF NOT EXISTS preço (
-    Preço INT PRIMARY KEY
+    Preco_ID INT AUTO_INCREMENT PRIMARY KEY,
+    App_ID INT NOT NULL,
+    Preco DECIMAL(10,2) NOT NULL,
+    Data_Atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (App_ID) REFERENCES Jogo(App_ID) ON DELETE CASCADE
 );
 insert into preço (App_ID,Preco)
 values
@@ -11,16 +13,16 @@ values
 (2,32.99),
 (3,299.90),
 (4,199.90),
-(5,8241),
-(6,0),
-(7,80),
-(8,80),
-(9,60),
-(10,90),
-(11,0),
-(12,90),
-(13,0),
-(14,0),
-(15,0);
+(5,82.41),
+(6,59.99),
+(7,124.50),
+(8,20.69),
+(9,249.90),
+(10,249.90),
+(11,199.50),
+(12,24.99),
+(13,149.99),
+(14,61.99),
+(15,149.00);
 
 SELECT * FROM preço
