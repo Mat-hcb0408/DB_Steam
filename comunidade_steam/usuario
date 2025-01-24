@@ -4,7 +4,8 @@ ID_Usuario int auto_increment not null Primary Key,
 Nome varchar(80) not null,
 Nick_name varchar(100) not null,
 Email varchar(100) not null,
-Senha varchar(10)
+Senha varchar(10),
+imagem_Perfil_URL text
 );
 
 INSERT INTO usuario (ID_Usuario, Nome, Nick_name, Email, Senha)
