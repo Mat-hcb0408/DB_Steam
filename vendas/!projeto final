@@ -24,7 +24,6 @@ values
 (13,149.99),
 (14,61.99),
 (15,149.00);
-
 SELECT 
     j.Nome AS Nome_Jogo, 
     p.Preco AS Preco_Jogo,
@@ -40,7 +39,6 @@ Primary key (ID_Usuario, App_ID),
 foreign key(App_ID) references Jogo(App_ID),
 foreign key(ID_Usuario) references usuario(ID_Usuario)
 );
-
 
 INSERT INTO	carrinho (Id_usuario, App_ID)
 VALUES
@@ -100,7 +98,6 @@ VALUES
 ('15','2'),
 ('15','3'),
 ('15','14');
-
 SELECT 
     c.ID_Usuario, 
     u.Nome AS Nome_Usuario, 
@@ -195,7 +192,6 @@ VALUES
 (15, 13, 'PayPal', 13),  
 (15, 14, 'PayPal', 14),  
 (15, 15, 'PayPal', 15);
-
 SELECT 
     c.ID_Compra, 
     c.ID_Usuario, 
@@ -236,8 +232,6 @@ VALUES
 (13, 9, 13, 'Other'),                 -- DayZ
 (14, 10, 14, 'Revenue Share'),        -- Euro Truck Simulator 2
 (15, 11, 15, 'Licensing');            -- The Elder Scrolls V: Skyrim Special Edition
-
-
 SELECT 
     t.Transaction_ID, 
     j.Nome AS Nome_Jogo, 
@@ -279,7 +273,6 @@ INSERT INTO Avaliacao (ID_Usuario, App_ID, Nota, Comentario) VALUES
 (13, 13, 8, 'Muito bom, mas precisa de algumas melhorias.'),
 (14, 14, 9, 'Quase perfeito, pequenos detalhes incomodam.'),
 (15, 15, 7, 'Jogo legal, mas pode ser cansativo após um tempo.');
-
 SELECT 
     a.ID_Avaliacao, 
     u.Nome AS Nome_Usuario, 
