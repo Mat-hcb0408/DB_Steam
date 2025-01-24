@@ -5,74 +5,37 @@ ID_Usuario int auto_increment not null Primary Key,
 Nome varchar(80) not null,
 Nick_name varchar(100) not null,
 Email varchar(80) not null,
-Senha varchar(10),
-confirmacao BOOLEAN DEFAULT FALSE
+Senha varchar(10)
 );
+
+INSERT INTO usuario (ID_Usuario, Nome, Nick_name, Email, Senha)
+VALUES 
+  (1,'Matheus Henrinque', 'Star_Ghost0408', 'matheus.henrinque@gmail.com', 'senha123'),
+  (2,'Thallys Malaquias', 'Thallys_San', 'thallys.malaquias@hotmail.com', 'senha456'),
+  (3,'Davidson Fernandes', 'Fdavidson91', 'davidson.fernandes@yahoo.com', 'senha789'),
+  (4,'Guilherme Rocha', '919Calabreso', 'guilherme.rocha@outlook.com', 'senha101'),
+  (5,'Ryan Gabriel', 'Camisinho', 'ryan.gabriel@gmail.com', 'senha202'),
+  (6,'Rafael Pereira', 'RoubeiTeuLoot', 'rafael.pereira@live.com', 'senha303'),
+  (7,'Pedro Henrique', 'TropeceiNoHDMI', 'pedro.henrique@gmail.com', 'senha404'),
+  (8,'Marcos Silva', 'LagMental200ms9', 'marcos.silva@yahoo.com', 'senha505'),
+  (9,'João Souza', 'SeuModemCaiu', 'joao.souza@hotmail.com', 'senha606'),
+  (10,'Bruno Lima', 'BalaPerdidaVIP', 'bruno.lima@live.com', 'senha707'),
+  (11,'André Almeida', 'AltF4ProPlayer', 'andre.almeida@gmail.com', 'senha808'),
+  (12,'Eduardo Campos', 'PuloErrado123', 'eduardo.campos@yahoo.com', 'senha909'),
+  (13,'Fernanda Costa', 'Fedora Linux', 'fernanda.costa@gmail.com', 'senha1010'),
+  (14,'Tiago Rodrigues', 'TioDoWiFiGratis', 'tiago.rodrigues@hotmail.com', 'senha1111'),
+  (15,'Renan Faria', 'HeadshotNaSorte', 'renan.faria@yahoo.com', 'senha1212'),
+  (16,'Gustavo Lopes', 'CamperDoAno', 'gustavo.lopes@gmail.com', 'senha1313'),
+  (17,'Ana Paula', 'NaFilaDoRespawn', 'ana.paula@hotmail.com', 'senha1414'),
+  (18,'Caio Matos', 'CtrlAltTilt', 'caio.matos@yahoo.com', 'senha1515');
 
 -- tabela badges
 create table badges(
 ID_Badge int auto_increment not null Primary Key,
-nome varchar(20),
+nome varchar(200),
 imagem text);
 
--- tabela usuario badge
-create table usuario_badge(
-ID_Usuario int,
-ID_Badge int,
-Foreign key (ID_Usuario) references usuario(ID_Usuario),
-Foreign key (ID_Badge) references badges(ID_Badge)
-);
-
--- tabela biblioteca
-create table biblioteca(
-App_ID INT,
-ID_Usuario int,
-foreign key(App_ID) references Jogo(App_ID),
-foreign key(ID_Usuario) references usuario(ID_Usuario)
-);
-
--- tabela amigos
-create table amigos(
-    ID_usuario1 int,
-    ID_usuario2 int,
-    primary key (ID_usuario1, ID_usuario2),
-    foreign key (ID_usuario1) references usuario(ID_Usuario) on delete cascade,
-    foreign key (ID_usuario2) references usuario(ID_Usuario) on delete cascade,
-    check (ID_usuario1 <> ID_usuario2) -- Impede um usuário de ser amigo dele mesmo
-);
-
-INSERT INTO amigos (ID_usuario1, ID_usuario2) VALUES
-(1, 2), (1, 3), (1, 4), (1, 5),
-(2, 1), (2, 3), (2, 4), (2, 5),
-(3, 1), (3, 2), (3, 4), (3, 5),
-(4, 1), (4, 2), (4, 3), (4, 5),
-(6, 7), (6, 8), (6, 9), 
-(7, 10), (7, 11), 
-(8, 12), (8, 13), (8, 14), 
-(9, 15), (9, 16), 
-(10, 17), (10, 18), 
-(11, 12), (11, 13), 
-(12, 14), (12, 15), 
-(13, 16), (13, 17), 
-(14, 18), 
-(15, 16), 
-(16, 17), (16, 18), 
-(17, 18);
-
-USE steam;
-SELECT 
-    u1.Nome AS Usuario_Nome,
-    GROUP_CONCAT(u2.Nome ORDER BY u2.Nome ASC) AS Amigos
-FROM 
-    amigos
-JOIN 
-    usuario u1 ON amigos.ID_usuario1 = u1.ID_Usuario
-JOIN 
-    usuario u2 ON amigos.ID_usuario2 = u2.ID_Usuario
-GROUP BY 
-    u1.ID_Usuario;
-    
-    insert into Badges (ID_Badge,nome,imagem)
+insert into Badges (ID_Badge,nome,imagem)
 values 
 (1,'Community Contributor','https://community.cloudflare.steamstatic.com/public/images/badges/48_communitycontributor/1_80.png'),
 (2,'2022 Steam Cup','https://community.cloudflare.steamstatic.com/public/images/badges/generic/RacingSale2022_80.png'),
@@ -89,6 +52,54 @@ values
 (13,'Steamworks Developer','https://community.cloudflare.steamstatic.com/public/images/badges/generic/GameDeveloper_80.png'),
 (14,'Years of Service','https://community.cloudflare.steamstatic.com/public/images/badges/02_years/steamyears20anni_80.png'),
 (15,'Steam Holiday Sale 2011','https://community.cloudflare.steamstatic.com/public/images/badges/06_winter2011/coal03_80.png');
+
+-- tabela usuario badge
+create table usuario_badge(
+ID_Usuario int,
+ID_Badge int,
+Foreign key (ID_Usuario) references usuario(ID_Usuario),
+Foreign key (ID_Badge) references badges(ID_Badge)
+);
+
+INSERT INTO usuario_badge (ID_Usuario, ID_Badge) VALUES
+(1, 3), (1, 7), (1, 10),
+(2, 1), (2, 5), (2, 8), (2, 11),
+(3, 2), (3, 4), (3, 9), (3, 12),
+(4, 6), (4, 14), (4, 15),
+(5, 3), (5, 8),
+(6, 1), (6, 10), (6, 13),
+(7, 5), (7, 7), (7, 9), (7, 14),
+(8, 2), (8, 4), (8, 6), (8, 11),
+(9, 1), (9, 3), (9, 12),
+(10, 5), (10, 8), (10, 10), (10, 15),
+(11, 2), (11, 7), (11, 9),
+(12, 4), (12, 6), (12, 14),
+(13, 1), (13, 5), (13, 13),
+(14, 3), (14, 8), (14, 11),
+(15, 2), (15, 9), (15, 12), (15, 14),
+(16, 4), (16, 6), (16, 10),
+(17, 1), (17, 3), (17, 7), (17, 13),
+(18, 5), (18, 8), (18, 12);
+
+SELECT 
+    usuario.Nome AS Usuario_Nome,
+    GROUP_CONCAT(badges.Nome ORDER BY badges.Nome ASC) AS Badges_Obtidas
+FROM 
+    usuario
+JOIN 
+    usuario_badge ub ON usuario.ID_Usuario = ub.ID_Usuario
+JOIN 
+    badges ON ub.ID_Badge = badges.ID_Badge
+GROUP BY 
+    usuario.ID_Usuario;
+
+-- tabela biblioteca
+create table biblioteca(
+App_ID INT,
+ID_Usuario int,
+foreign key(App_ID) references Jogo(App_ID),
+foreign key(ID_Usuario) references usuario(ID_Usuario)
+);
 
 insert into biblioteca(ID_Usuario,App_ID) values
 (1,1),
@@ -162,7 +173,6 @@ insert into biblioteca(ID_Usuario,App_ID) values
 (15,14),
 (15,15);
 
-USE steam;
 SELECT 
     usuario.Nome AS Usuario_Nome,
     GROUP_CONCAT(jogo.Nome ORDER BY jogo.Nome ASC) AS Jogos_Possuidos
@@ -174,142 +184,44 @@ JOIN
     jogo ON b.App_ID = jogo.App_ID
 GROUP BY 
     usuario.ID_Usuario;
-    
-    insert into biblioteca(ID_Usuario,App_ID) values
-(1,1),
-(1,11),
-(2,1),
-(2,2),
-(2,3),
-(2,5),
-(2,12),
-(2,14),
-(2,15), 
-(3,1),
-(3,5),
-(3,6),
-(3,8),
-(4,1),
-(5,1),
-(5,5),
-(6,3),
-(6,4),
-(6,6),
-(6,10),   
-(7,1),
-(7,11),
-(7,13),
-(7,14),
-(7,15), 
-(8,2),
-(8,8),
-(8,12),
-(8,14),
-(9,1),
-(9,4),
-(9,9),
-(9,11),
-(10,10), 
-(10,11),
-(10,12),
-(10,13),
-(10,14),
-(10,15),
-(11,1),
-(11,2),
-(11,3),
-(11,4),
-(11,5),
-(11,6), 
-(12,7),
-(12,9),
-(12,10),
-(12,11),
-(12,14), 
-(13,4),
-(13,9),
-(13,10),
-(13,11), 
-(14,14),
-(15,1),
-(15,2),
-(15,3),
-(15,4),
-(15,5),
-(15,6),
-(15,7),
-(15,8),
-(15,9),
-(15,10),
-(15,11),
-(15,12),
-(15,13),
-(15,14),
-(15,15);
 
-USE steam;
-SELECT 
-    usuario.Nome AS Usuario_Nome,
-    GROUP_CONCAT(jogo.Nome ORDER BY jogo.Nome ASC) AS Jogos_Possuidos
-FROM 
-    usuario
-JOIN 
-    biblioteca b ON usuario.ID_Usuario = b.ID_Usuario
-JOIN 
-    jogo ON b.App_ID = jogo.App_ID
-GROUP BY 
-    usuario.ID_Usuario;
-    
-    INSERT INTO usuario (ID_Usuario, Nome, Nick_name, Email, Senha)
-VALUES 
-  (1,'Matheus Henrinque', 'Star_Ghost0408', 'matheus.henrinque@gmail.com', 'senha123'),
-  (2,'Thallys Malaquias', 'Thallys_San', 'thallys.malaquias@hotmail.com', 'senha456'),
-  (3,'Davidson Fernandes', 'Fdavidson91', 'davidson.fernandes@yahoo.com', 'senha789'),
-  (4,'Guilherme Rocha', '919Calabreso', 'guilherme.rocha@outlook.com', 'senha101'),
-  (5,'Ryan Gabriel', 'Camisinho', 'ryan.gabriel@gmail.com', 'senha202'),
-  (6,'Rafael Pereira', 'RoubeiTeuLoot', 'rafael.pereira@live.com', 'senha303'),
-  (7,'Pedro Henrique', 'TropeceiNoHDMI', 'pedro.henrique@gmail.com', 'senha404'),
-  (8,'Marcos Silva', 'LagMental200ms9', 'marcos.silva@yahoo.com', 'senha505'),
-  (9,'João Souza', 'SeuModemCaiu', 'joao.souza@hotmail.com', 'senha606'),
-  (10,'Bruno Lima', 'BalaPerdidaVIP', 'bruno.lima@live.com', 'senha707'),
-  (11,'André Almeida', 'AltF4ProPlayer', 'andre.almeida@gmail.com', 'senha808'),
-  (12,'Eduardo Campos', 'PuloErrado123', 'eduardo.campos@yahoo.com', 'senha909'),
-  (13,'Fernanda Costa', 'Fedora Linux', 'fernanda.costa@gmail.com', 'senha1010'),
-  (14,'Tiago Rodrigues', 'TioDoWiFiGratis', 'tiago.rodrigues@hotmail.com', 'senha1111'),
-  (15,'Renan Faria', 'HeadshotNaSorte', 'renan.faria@yahoo.com', 'senha1212'),
-  (16,'Gustavo Lopes', 'CamperDoAno', 'gustavo.lopes@gmail.com', 'senha1313'),
-  (17,'Ana Paula', 'NaFilaDoRespawn', 'ana.paula@hotmail.com', 'senha1414'),
-  (18,'Caio Matos', 'CtrlAltTilt', 'caio.matos@yahoo.com', 'senha1515');
-  
-  INSERT INTO usuario_badge (ID_Usuario, ID_Badge) VALUES
-(1, 3), (1, 7), (1, 10),
-(2, 1), (2, 5), (2, 8), (2, 11),
-(3, 2), (3, 4), (3, 9), (3, 12),
-(4, 6), (4, 14), (4, 15),
-(5, 3), (5, 8),
-(6, 1), (6, 10), (6, 13),
-(7, 5), (7, 7), (7, 9), (7, 14),
-(8, 2), (8, 4), (8, 6), (8, 11),
-(9, 1), (9, 3), (9, 12),
-(10, 5), (10, 8), (10, 10), (10, 15),
-(11, 2), (11, 7), (11, 9),
-(12, 4), (12, 6), (12, 14),
-(13, 1), (13, 5), (13, 13),
-(14, 3), (14, 8), (14, 11),
-(15, 2), (15, 9), (15, 12), (15, 14),
-(16, 4), (16, 6), (16, 10),
-(17, 1), (17, 3), (17, 7), (17, 13),
-(18, 5), (18, 8), (18, 12);
 
-USE steam;
+-- tabela amigos
+create table amigos(
+    ID_usuario1 int,
+    ID_usuario2 int,
+    primary key (ID_usuario1, ID_usuario2),
+    foreign key (ID_usuario1) references usuario(ID_Usuario) on delete cascade,
+    foreign key (ID_usuario2) references usuario(ID_Usuario) on delete cascade,
+    check (ID_usuario1 <> ID_usuario2) -- Impede um usuário de ser amigo dele mesmo
+);
+
+INSERT INTO amigos (ID_usuario1, ID_usuario2) VALUES
+(1, 2), (1, 3), (1, 4), (1, 5),
+(2, 1), (2, 3), (2, 4), (2, 5),
+(3, 1), (3, 2), (3, 4), (3, 5),
+(4, 1), (4, 2), (4, 3), (4, 5),
+(6, 7), (6, 8), (6, 9), 
+(7, 10), (7, 11), 
+(8, 12), (8, 13), (8, 14), 
+(9, 15), (9, 16), 
+(10, 17), (10, 18), 
+(11, 12), (11, 13), 
+(12, 14), (12, 15), 
+(13, 16), (13, 17), 
+(14, 18), 
+(15, 16), 
+(16, 17), (16, 18), 
+(17, 18);
+
 SELECT 
-    usuario.Nome AS Usuario_Nome,
-    GROUP_CONCAT(badges.Nome ORDER BY badges.Nome ASC) AS Badges_Obtidas
+    u1.Nome AS Usuario_Nome,
+    GROUP_CONCAT(u2.Nome ORDER BY u2.Nome ASC) AS Amigos
 FROM 
-    usuario
+    amigos
 JOIN 
-    usuario_badge ub ON usuario.ID_Usuario = ub.ID_Usuario
+    usuario u1 ON amigos.ID_usuario1 = u1.ID_Usuario
 JOIN 
-    badges ON ub.ID_Badge = badges.ID_Badge
+    usuario u2 ON amigos.ID_usuario2 = u2.ID_Usuario
 GROUP BY 
-    usuario.ID_Usuario;
+    u1.ID_Usuario;
