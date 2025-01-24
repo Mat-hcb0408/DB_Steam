@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS Jogo (
     Nome VARCHAR(300) NOT NULL,
     Developer_ID INT,
     Publisher_ID INT,
+    Imagem_URL text,
     Last_Record_Update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     Release_Date DATE,
     FOREIGN KEY (Developer_ID) REFERENCES Developer(Developer_ID) ON DELETE SET NULL,
@@ -10,23 +11,23 @@ CREATE TABLE IF NOT EXISTS Jogo (
 );
 
 USE steam;
-INSERT INTO Jogo (App_ID, Nome, Developer_ID, Publisher_ID, Release_Date) 
+INSERT INTO Jogo (App_ID, Nome, Developer_ID, Publisher_ID, Imagem_URL, Release_Date) 
 VALUES
-(1, 'Counter-Strike 2', 1, 1, '2012-08-21'),
-(2, 'Terraria', 2, 2, '2011-05-16'), 
-(3, 'Red Dead Redemption 2', 3, 3, '2018-10-26'), 
-(4, 'The Last Of Us Part II', 4, 4, '2020-06-19'), 
-(5, 'Grand Theft Auto V', 5, 3, '2015-04-14'), 
-(6, 'The Walking Dead: The Final Season', 6, 5, '2018-08-14'), 
-(7, 'Forza Horizon 5', 7, 6, '2021-11-09'), 
-(8, 'Poppy Playtime - Chapter 2', 8, 7, '2022-05-05'), 
-(9, 'The Last Of Us Part I', 4, 4, '2022-09-02'), 
-(10, 'Marvel’s Spider-Man Remastered', 9, 4, '2022-08-12'), 
-(11, 'Helldivers™ 2', 10, 4, '2024-09-20'), 
-(12, 'Stardew Valley', 11, 8, '2016-02-26'), 
-(13, 'DayZ', 12, 9, '2018-12-13'), 
-(14, 'Euro Truck Simulator 2', 13, 10, '2012-10-19'),
-(15,'The Elder Scrolls V: Skyrim Special Edition',14,11,'2016-10-28');
+(1, 'Counter-Strike 2', 1, 1,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/header.jpg?t=1729703045', '2012-08-21'),
+(2, 'Terraria', 2, 2,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg?t=1731252354', '2011-05-16'), 
+(3, 'Red Dead Redemption 2', 3, 3,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1720558643', '2018-10-26'), 
+(4, 'The Last Of Us Part II', 4, 4,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2531310/header.jpg?t=1737495839', '2020-06-19'), 
+(5, 'Grand Theft Auto V', 5, 3,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1737136276', '2015-04-14'), 
+(6, 'The Walking Dead: The Final Season', 6, 5,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/866800/header.jpg?t=1729703141', '2018-08-14'), 
+(7, 'Forza Horizon 5', 7, 6,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/header.jpg?t=1737050285', '2021-11-09'), 
+(8, 'Poppy Playtime - Chapter 2', 8, 7,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1817490/header.jpg?t=1733782699', '2022-05-05'), 
+(9, 'The Last Of Us Part I', 4, 4,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1888930/header.jpg?t=1736371681', '2022-09-02'), 
+(10, 'Marvel’s Spider-Man Remastered', 9, 4,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1817070/header.jpg?t=1725652915', '2022-08-12'), 
+(11, 'Helldivers™ 2', 10, 4,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/553850/header_brazilian.jpg?t=1737495569', '2024-09-20'), 
+(12, 'Stardew Valley', 11, 8,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1711128146', '2016-02-26'), 
+(13, 'DayZ', 12, 9,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/221100/header.jpg?t=1736875642', '2018-12-13'), 
+(14, 'Euro Truck Simulator 2', 13, 10,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/header.jpg?t=1735901402', '2012-10-19'),
+(15,'The Elder Scrolls V: Skyrim Special Edition',14,11,'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/489830/header.jpg?t=1721923149','2016-10-28');
 
 SELECT 
     jogo.App_ID, 
